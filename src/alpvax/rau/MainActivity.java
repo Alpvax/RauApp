@@ -2,6 +2,7 @@ package alpvax.rau;
 
 import java.util.Locale;
 
+import alpvax.rau.fragments.DictionaryFragment;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -80,6 +81,9 @@ public class MainActivity extends Activity
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter
 	{
+		private FragmentFactory[] fragments = {
+			new FragmentFactory(DictionaryFragment.class, R.string.title_dictionary_latin, R.string.title_dictionary_rau)	
+		};
 
 		public SectionsPagerAdapter(FragmentManager fm)
 		{
@@ -89,32 +93,52 @@ public class MainActivity extends Activity
 		@Override
 		public Fragment getItem(int position)
 		{
-			// getItem is called to instantiate the fragment for the given page.
-			// Return a PlaceholderFragment (defined as a static inner class
-			// below).
-			return null;//PlaceholderFragment.newInstance(position + 1);
+			try
+			{
+				return fragments[position].newFragment();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+			return null;
 		}
 
 		@Override
 		public int getCount()
 		{
-			// Show 3 total pages.
-			return 3;
+			return fragments.length;
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position)
 		{
-			Locale l = Locale.getDefault();
-			switch (position) {
-			case 0:
-				return getString(R.string.title_section1).toUpperCase(l);
-			case 1:
-				return getString(R.string.title_section2).toUpperCase(l);
-			case 2:
-				return getString(R.string.title_section3).toUpperCase(l);
-			}
-			return null;
+			return fragments[position].getTitle();
+		}
+	}
+	
+	private class FragmentFactory
+	{
+		private Class<? extends Fragment> frag;
+		private String lat;
+		private String rau;
+		
+		public FragmentFactory(Class<? extends Fragment> fragment, int lat_title, int rau_title)
+		{
+			frag = fragment;
+			lat = getString(lat_title);
+			rau = getString(rau_title);
+		}
+		
+		public CharSequence getTitle()
+		{
+			//TODO: After Settings, get Title Formatted
+			return lat;
+		}
+		
+		public Fragment newFragment() throws InstantiationException, IllegalAccessException
+		{
+			return frag.newInstance();
 		}
 	}
 

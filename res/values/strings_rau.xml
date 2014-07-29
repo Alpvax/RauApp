@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="aukaa">&#xE000;&#xE002;&#xE004;</string>
+
+    <string name="app_name_rau">&#xE10F;</string>
+    
+    <string name="title_messages_rau">Messages</string>
+    <string name="title_compose_rau">Compose</string>
+    <string name="title_dictionary_rau">&#xE020;&#xE016;&#xE004;</string>
+    <string name="title_chatcontacts_rau">Conversations</string>
+    <string name="title_chat_rau">Chat</string>
+    <string name="title_activity_settings_rau">Settings</string>
+    <string name="title_activity_contacts_rau">Contacts</string>
+    
+    <string name="action_settings_rau">Settings</string>
+    
+    
+    <string name="phone_no_hint_rau">Enter Phone No.</string>
+    <string name="phoneno_dialog_title_rau">Phone number</string>
+    <string name="phoneno_dialog_message_rau">Please enter your phone \nnumber for verification</string>
+    <string name="phoneno_verify_confirmed_rau">Phone number verified</string>
+</resources>

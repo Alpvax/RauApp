@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <PreferenceCategory 
+        android:title="@string/pref_general_title_latin"
+        android:key="@string/pref_key_general_settings">
+        <CheckBoxPreference
+            android:key="@string/pref_key_kbd_btns"
+            android:title="@string/pref_kbd_btns_title_latin"
+            android:summary="@string/pref_kbd_btns_summary_latin"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="@string/pref_key_text_auk"
+            android:title="@string/pref_text_auk_title_latin"
+            android:summary="@string/pref_text_auk_summary_latin"
+            android:defaultValue="true" />
+        <RingtonePreference
+     		android:key="@string/pref_key_notification"
+     		android:title="@string/pref_notification_title_latin"
+            android:summary="@string/pref_notification_summary_latin"
+     		android:ringtoneType="notification"
+     		android:showDefault="true"
+     		android:defaultValue="content://settings/system/notification_sound" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory 
+        android:title="@string/pref_group_title_latin"
+        android:key="@string/pref_key_group_settings">
+        <EditTextPreference 
+            android:key="@string/pref_key_own_number"
+            android:title="@string/pref_own_number_title_latin"
+            android:summary="@string/pref_own_number_summary_latin"
+        	android:inputType="phone" 
+            android:defaultValue="" />
+        <CheckBoxPreference
+            android:key="@string/pref_key_auto_add_contact"
+            android:title="@string/pref_auto_add_contact_title_latin"
+            android:summary="@string/pref_auto_add_contact_summary_latin"
+            android:defaultValue="true" />
+        <Preference 
+            android:key="@string/pref_key_contact_list"
+            android:title="@string/pref_contact_list_title_latin"
+            android:summary="@string/pref_contact_list_summary_latin" >
+	            <intent android:action="alpvax.rau.android.ContactsActivity" />
+		</Preference>
+    </PreferenceCategory>
+    
+    <PreferenceCategory 
+        android:title="@string/pref_fonts_title_latin"
+        android:key="@string/pref_key_fonts_settings">
+        <alpvax.rau.android.settings.FontPreference
+            android:key="@string/pref_key_font_lat"
+            android:title="@string/pref_font_lat_title_latin" 
+            android:summary="@string/pref_font_lat_summary_latin"
+            android:defaultValue="" />
+        <alpvax.rau.android.settings.FontPreference
+            android:key="@string/pref_key_font_auk"
+            android:title="@string/pref_font_auk_title_latin" 
+            android:summary="@string/pref_font_auk_summary_latin"
+            android:defaultValue="" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory 
+        android:title="@string/pref_debug_title_latin"
+        android:key="@string/pref_key_debug_settings">
+        <CheckBoxPreference
+            android:key="@string/pref_key_send_to_self"
+            android:title="@string/pref_send_to_self_title_latin"
+            android:summary="@string/pref_send_to_self_summary_latin"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+    
+</PreferenceScreen>

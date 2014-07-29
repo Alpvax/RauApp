@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="latin">Latin</string>
+
+    <string name="app_name_latin">RauApp</string>
+    
+    <string name="title_messages_latin">Messages</string>
+    <string name="title_compose_latin">Compose</string>
+    <string name="title_dictionary_latin">Translate</string>
+    <string name="title_chatcontacts_latin">Conversations</string>
+    <string name="title_chat_latin">Chat</string>
+    <string name="title_activity_settings_latin">Settings</string>
+    <string name="title_activity_contacts_latin">Contacts</string>
+    
+    <string name="action_settings_latin">Settings</string>
+    
+    
+    <string name="phone_no_hint_latin">Enter Phone No.</string>
+    <string name="phoneno_dialog_title_latin">Phone number</string>
+    <string name="phoneno_dialog_message_latin">Please enter your phone \nnumber for verification</string>
+    <string name="phoneno_verify_confirmed_latin">Phone number verified</string>
+
+</resources>

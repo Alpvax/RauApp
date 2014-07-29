@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Behind the scenes -->
+    <string name="pref_key_first_run">pref_key_first_run</string>
+    <string name="pref_key_detected_number">pref_key_detected_number</string>
+    
+    <!-- General -->
+    <string name="pref_key_general_settings">pref_key_general_settings</string>
+    <string name="pref_key_text_auk">pref_key_text_auk</string>
+    <string name="pref_key_kbd_btns">pref_key_kbd_btns</string>
+    <string name="pref_key_notification">pref_key_notification</string>
+    
+    <!-- Contacts -->
+    <string name="pref_key_group_settings">pref_key_group_settings</string>
+    <string name="pref_key_own_number">pref_key_own_number</string>
+    <string name="pref_key_auto_add_contact">pref_key_auto_add_contact</string>
+    <string name="pref_key_contact_list">pref_key_contact_list</string>
+    
+    <!-- Fonts -->
+    <string name="pref_key_fonts_settings">pref_key_fonts_settings</string>
+    <string name="pref_key_font_lat">pref_key_font_lat</string>
+    <string name="pref_key_font_auk">pref_key_font_auk</string>
+    
+    <!-- Debug -->
+    <string name="pref_key_debug_settings">pref_key_debug_settings</string>
+    <string name="pref_key_send_to_self">pref_key_send_to_self</string>
+    <string name="pref_key_open_kbd">pref_key_open_kbd</string>
+</resources>

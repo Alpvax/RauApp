@@ -11,11 +11,11 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/app_name_latin"
         android:theme="@style/AppTheme" >
         <activity
             android:name="alpvax.rau.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name_latin" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

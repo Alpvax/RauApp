@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- TODO: Need to be transferred to language files when needed
+    <string name="destination_label">To:</string>
+    <string name="action_add_contact">Add</string>
+    <string name="message_hint">enter message</string>
+    <string name="btn_send">Send</string>
+    <string name="btn_remove">remove</string>
+    <string name="font_auk">aukArial</string>
+    <string name="no_messages">No Messages</string>
+    <string name="no_contacts">No Contacts, please click add to add one</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="kbd_swap">swap</string>
+    <string name="kbd_hide">hide</string>
+    <string name="title_activity_swipe">Swipe</string>
+    <string name="action_show_kbd">Keyboard</string>
+	-->
+</resources>
