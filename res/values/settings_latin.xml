@@ -1,53 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Default">Default</string><!-- Capitalised cause "default" is a keyword -->
-    <string name="silent">Silent</string>
+    <item type="latinString" name="Default">Default</item><!-- Capitalised cause "default" is a keyword -->
+    <item type="latinString" name="silent">Silent</item>
     
-    <string name="verify">Verify</string>
-    
-    
-    
-    <string name="pref_general_title_latin">General</string>
-    
-    <string name="pref_text_auk_title_latin">Use Aukaa text</string>
-    <string name="pref_text_auk_summary_latin">Use aukaa for titles, labels, prompts etc.</string>
-    
-    <string name="pref_kbd_btns_title_latin">Display keyboard buttons</string>
-    <string name="pref_kbd_btns_summary_latin">Whether or not to show the keyboard control buttons along the top of the keyboard</string>
-    
-    <string name="pref_notification_title_latin">Notification sound</string>
-    <string name="pref_notification_summary_latin">Pick a sound</string>
+    <item type="latinString" name="verify">Verify</item>
     
     
     
-    <string name="pref_group_title_latin">Contacts</string>
+    <item type="latinString" name="pref_general_title">General</item>
     
-    <string name="pref_own_number_title_latin">Your Number</string>
-    <string name="pref_own_number_summary_latin">Your phone number</string>
+    <item type="latinString" name="pref_language_title">App Language</item>
+    <item type="latinString" name="pref_language_summary">Language to use for titles, labels, prompts etc.</item>
     
-    <string name="pref_auto_add_contact_title_latin">Auto-Add</string>
-    <string name="pref_auto_add_contact_summary_latin">Automatically add contacts to your send list when they send you a message</string>
+    <item type="latinString" name="pref_kbd_btns_title">Display keyboard buttons</item>
+    <item type="latinString" name="pref_kbd_btns_summary">Whether or not to show the keyboard control buttons along the top of the keyboard</item>
     
-    <string name="pref_contact_list_title_latin">Contact List</string>
-    <string name="pref_contact_list_summary_latin">List of contacts to send messages to</string>
-    
-    
-    
-    <string name="pref_fonts_title_latin">Fonts</string>
-    
-    <string name="pref_font_lat_title_latin">Latin</string>
-    <string name="pref_font_lat_summary_latin">Font which includes the latin alphabet</string>
-    
-    <string name="pref_font_auk_title_latin">Aukaa</string>
-    <string name="pref_font_auk_summary_latin">Font which includes the rau alphabet</string>
+    <item type="latinString" name="pref_notification_title">Notification sound</item>
+    <item type="latinString" name="pref_notification_summary">Pick a sound</item>
     
     
     
-    <string name="pref_debug_title_latin">Debug</string>
+    <item type="latinString" name="pref_group_title">Contacts</item>
     
-    <string name="pref_send_to_self_title_latin">Send to Self</string>
-    <string name="pref_send_to_self_summary_latin">Send messages to yourself in addition to everyone else in your contacts</string>
+    <item type="latinString" name="pref_own_number_title">Your Number</item>
+    <item type="latinString" name="pref_own_number_summary">Your phone number</item>
     
-    <string name="pref_open_kbd_title_latin">Open Keyboard</string>
-    <string name="pref_open_kbd_summary_latin">Temporary method of changing the keyboard used</string>
+    <item type="latinString" name="pref_auto_add_contact_title">Auto-Add</item>
+    <item type="latinString" name="pref_auto_add_contact_summary">Automatically add contacts to your send list when they send you a message</item>
+    
+    <item type="latinString" name="pref_contact_list_title">Contact List</item>
+    <item type="latinString" name="pref_contact_list_summary">List of contacts to send messages to</item>
+    
+    
+    
+    <item type="latinString" name="pref_fonts_title">Fonts</item>
+    
+    <item type="latinString" name="pref_font_lat_title">Latin</item>
+    <item type="latinString" name="pref_font_lat_summary">Font which includes the latin alphabet</item>
+    
+    <item type="latinString" name="pref_font_auk_title">Aukaa</item>
+    <item type="latinString" name="pref_font_auk_summary">Font which includes the rau alphabet</item>
+    
+    
+    
+    <item type="latinString" name="pref_debug_title">Debug</item>
+    
+    <item type="latinString" name="pref_send_to_self_title">Send to Self</item>
+    <item type="latinString" name="pref_send_to_self_summary">Send messages to yourself in addition to everyone else in your contacts</item>
 </resources>

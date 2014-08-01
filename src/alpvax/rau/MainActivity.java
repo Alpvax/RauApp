@@ -1,25 +1,26 @@
 package alpvax.rau;
 
-import java.util.Locale;
-
-import alpvax.rau.fragments.DictionaryFragment;
+import alpvax.rau.util.AppConstants;
+import alpvax.rau.util.AppUtils;
+import alpvax.rau.util.settings.SettingsFragment.SettingsActivity;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.support.v13.app.FragmentPagerAdapter;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class MainActivity extends Activity
+public class MainActivity extends Activity implements OnPageChangeListener
 {
 
 	/**
@@ -29,12 +30,12 @@ public class MainActivity extends Activity
 	 * becomes too memory intensive, it may be best to switch to a
 	 * {@link android.support.v13.app.FragmentStatePagerAdapter}.
 	 */
-	SectionsPagerAdapter mSectionsPagerAdapter;
+	SectionsPagerAdapter sectionsPagerAdapter;
 
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
-	ViewPager mViewPager;
+	ViewPager viewPager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -44,35 +45,65 @@ public class MainActivity extends Activity
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the activity.
-		mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+		sectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
 
 		// Set up the ViewPager with the sections adapter.
-		mViewPager = (ViewPager)findViewById(R.id.pager);
-		mViewPager.setAdapter(mSectionsPagerAdapter);
-
+		viewPager = (ViewPager)findViewById(R.id.pager);
+		viewPager.setAdapter(sectionsPagerAdapter);
+		
+		viewPager.setOnPageChangeListener(this);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		SubMenu sub = menu.addSubMenu("Test");
+		sub.add("Moar Test");
+		Log.d("Menu Size", "" + menu.size());
+		sub.add("Moar Test");
+		sub.add("Moar Test");
+		Log.d("Menu Size After Adding", "" + menu.size());
+		menu.findItem(R.id.action_settings).setTitle(AppUtils.instance(this).getText(R.array.action_settings));
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if(id == R.id.action_settings)
 		{
+			Intent intent = new Intent(this, SettingsActivity.class);
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onPageScrollStateChanged(int pos) {}
+
+	@Override
+	public void onPageScrolled(int pos, float arg1, int arg2) {}
+
+	@Override
+	public void onPageSelected(int pos)
+	{
+		setTitle(sectionsPagerAdapter.getPageTitle(pos));
+	}
+	
+	@Override
+	protected void onStart()
+	{
+	    super.onStart();
+	    viewPager.setCurrentItem(AppConstants.instance(getResources()).START_TAB);
+	}
+	
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
 	}
 
 	/**
@@ -82,7 +113,10 @@ public class MainActivity extends Activity
 	public class SectionsPagerAdapter extends FragmentPagerAdapter
 	{
 		private FragmentFactory[] fragments = {
-			new FragmentFactory(DictionaryFragment.class, R.string.title_dictionary_latin, R.string.title_dictionary_rau)	
+				new FragmentFactory(PlaceholderFragment.class, R.array.title_dictionary),
+				new FragmentFactory(PlaceholderFragment.class, R.array.title_messages),
+				new FragmentFactory(PlaceholderFragment.class, R.array.title_chatcontacts),
+				new FragmentFactory(PlaceholderFragment.class, R.array.title_chat)
 		};
 
 		public SectionsPagerAdapter(FragmentManager fm)
@@ -120,61 +154,65 @@ public class MainActivity extends Activity
 	private class FragmentFactory
 	{
 		private Class<? extends Fragment> frag;
-		private String lat;
-		private String rau;
-		
-		public FragmentFactory(Class<? extends Fragment> fragment, int lat_title, int rau_title)
+		private int title;
+
+		public FragmentFactory(Class<? extends Fragment> fragment, int titleID)
 		{
 			frag = fragment;
-			lat = getString(lat_title);
-			rau = getString(rau_title);
+			title = titleID;
 		}
 		
 		public CharSequence getTitle()
 		{
-			//TODO: After Settings, get Title Formatted
-			return lat;
+			return AppUtils.instance(getApplication()).getText(title);
 		}
 		
 		public Fragment newFragment() throws InstantiationException, IllegalAccessException
 		{
-			return frag.newInstance();
+			return frag == PlaceholderFragment.class ? PlaceholderFragment.newInstance(title) : frag.newInstance();
 		}
 	}
 
-//	/**
-//	 * A placeholder fragment containing a simple view.
-//	 */
-//	public static class PlaceholderFragment extends Fragment
-//	{
-//		/**
-//		 * The fragment argument representing the section number for this
-//		 * fragment.
-//		 */
-//		private static final String ARG_SECTION_NUMBER = "section_number";
-//
-//		/**
-//		 * Returns a new instance of this fragment for the given section number.
-//		 */
-//		public static PlaceholderFragment newInstance(int sectionNumber)
-//		{
-//			PlaceholderFragment fragment = new PlaceholderFragment();
-//			Bundle args = new Bundle();
-//			args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-//			fragment.setArguments(args);
-//			return fragment;
-//		}
-//
-//		public PlaceholderFragment() {}
-//
-//		@Override
-//		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-//		{
-//			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-//			TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-//			textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
-//			return rootView;
-//		}
-//	}
+	/**
+	 * A placeholder fragment containing a simple view.
+	 */
+	public static class PlaceholderFragment extends Fragment
+	{
+		/**
+		 * The fragment argument representing the section number for this
+		 * fragment.
+		 */
+		private static final String ARG_TITLE = "fragment_title";
+
+		/**
+		 * Returns a new instance of this fragment for the given section number.
+		 */
+		public static PlaceholderFragment newInstance(int titleResID)
+		{
+			PlaceholderFragment fragment = new PlaceholderFragment();
+			Bundle args = new Bundle();
+			args.putInt(ARG_TITLE, titleResID);
+			fragment.setArguments(args);
+			return fragment;
+		}
+
+		private TextView text;
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+		{
+			View rootView = inflater.inflate(R.layout.fragment_placeholder, container, false);
+			text = (TextView)rootView.findViewById(R.id.placeholderText);
+			text.setTag(getArguments().getInt(ARG_TITLE));
+			//text.setText(AppUtils.instance(getActivity()).getText(((Integer)text.getTag()).intValue()));
+			return rootView;
+		}
+		
+		@Override
+		public void onResume()
+		{
+			super.onResume();
+			text.setText(AppUtils.instance(getActivity()).getText(((Integer)text.getTag()).intValue()));
+		}
+	}
 
 }

@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="latin">Latin</string>
-
-    <string name="app_name_latin">RauApp</string>
+    <item type="latinString" name="app_name">RauApp</item>
     
-    <string name="title_messages_latin">Messages</string>
-    <string name="title_compose_latin">Compose</string>
-    <string name="title_dictionary_latin">Translate</string>
-    <string name="title_chatcontacts_latin">Conversations</string>
-    <string name="title_chat_latin">Chat</string>
-    <string name="title_activity_settings_latin">Settings</string>
-    <string name="title_activity_contacts_latin">Contacts</string>
+    <item type="latinString" name="title_messages">Messages</item>
+    <item type="latinString" name="title_compose">Compose</item>
+    <item type="latinString" name="title_dictionary">Translate</item>
+    <item type="latinString" name="title_chatcontacts">Conversations</item>
+    <item type="latinString" name="title_chat">Chat</item>
+    <item type="latinString" name="title_activity_settings">Settings</item>
+    <item type="latinString" name="title_activity_contacts">Contacts</item>
     
-    <string name="action_settings_latin">Settings</string>
+    <item type="latinString" name="action_settings">Settings</item>
     
     
-    <string name="phone_no_hint_latin">Enter Phone No.</string>
-    <string name="phoneno_dialog_title_latin">Phone number</string>
-    <string name="phoneno_dialog_message_latin">Please enter your phone \nnumber for verification</string>
-    <string name="phoneno_verify_confirmed_latin">Phone number verified</string>
+    <item type="latinString" name="phone_no_hint">Enter Phone No.</item>
+    <item type="latinString" name="phoneno_dialog_title">Phone number</item>
+    <item type="latinString" name="phoneno_dialog_message">Please enter your phone \nnumber for verification</item>
+    <item type="latinString" name="phoneno_verify_confirmed">Phone number verified</item>
 
 </resources>

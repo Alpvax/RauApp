@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="rauString" name="Default">Default</item><!-- Capitalised cause "default" is a keyword -->
+    <item type="rauString" name="silent">Silent</item>
+    
+    <item type="rauString" name="verify">Verify</item>
+    
+    
+    
+    <item type="rauString" name="pref_general_title">General</item>
+    
+    <item type="rauString" name="pref_language_title">App Language</item>
+    <item type="rauString" name="pref_language_summary">Language to use for titles, labels, prompts etc.</item>
+    
+    <item type="rauString" name="pref_kbd_btns_title">Display keyboard buttons</item>
+    <item type="rauString" name="pref_kbd_btns_summary">Whether or not to show the keyboard control buttons along the top of the keyboard</item>
+    
+    <item type="rauString" name="pref_notification_title">Notification sound</item>
+    <item type="rauString" name="pref_notification_summary">Pick a sound</item>
+    
+    
+    
+    <item type="rauString" name="pref_group_title">Contacts</item>
+    
+    <item type="rauString" name="pref_own_number_title">Your Number</item>
+    <item type="rauString" name="pref_own_number_summary">Your phone number</item>
+    
+    <item type="rauString" name="pref_auto_add_contact_title">Auto-Add</item>
+    <item type="rauString" name="pref_auto_add_contact_summary">Automatically add contacts to your send list when they send you a message</item>
+    
+    <item type="rauString" name="pref_contact_list_title">Contact List</item>
+    <item type="rauString" name="pref_contact_list_summary">List of contacts to send messages to</item>
+    
+    
+    
+    <item type="rauString" name="pref_fonts_title">Fonts</item>
+    
+    <item type="rauString" name="pref_font_lat_title">Latin</item>
+    <item type="rauString" name="pref_font_lat_summary">Font which includes the latin alphabet</item>
+    
+    <item type="rauString" name="pref_font_auk_title">Aukaa</item>
+    <item type="rauString" name="pref_font_auk_summary">Font which includes the rau alphabet</item>
+    
+    
+    
+    <item type="rauString" name="pref_debug_title">Debug</item>
+    
+    <item type="rauString" name="pref_send_to_self_title">Send to Self</item>
+    <item type="rauString" name="pref_send_to_self_summary">Send messages to yourself in addition to everyone else in your contacts</item>
+</resources>

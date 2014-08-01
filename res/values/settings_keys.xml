@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Behind the scenes -->
-    <string name="pref_key_first_run">pref_key_first_run</string>
-    <string name="pref_key_detected_number">pref_key_detected_number</string>
-    
-    <!-- General -->
-    <string name="pref_key_general_settings">pref_key_general_settings</string>
-    <string name="pref_key_text_auk">pref_key_text_auk</string>
-    <string name="pref_key_kbd_btns">pref_key_kbd_btns</string>
-    <string name="pref_key_notification">pref_key_notification</string>
-    
-    <!-- Contacts -->
-    <string name="pref_key_group_settings">pref_key_group_settings</string>
-    <string name="pref_key_own_number">pref_key_own_number</string>
-    <string name="pref_key_auto_add_contact">pref_key_auto_add_contact</string>
-    <string name="pref_key_contact_list">pref_key_contact_list</string>
-    
-    <!-- Fonts -->
-    <string name="pref_key_fonts_settings">pref_key_fonts_settings</string>
-    <string name="pref_key_font_lat">pref_key_font_lat</string>
-    <string name="pref_key_font_auk">pref_key_font_auk</string>
-    
-    <!-- Debug -->
-    <string name="pref_key_debug_settings">pref_key_debug_settings</string>
-    <string name="pref_key_send_to_self">pref_key_send_to_self</string>
-    <string name="pref_key_open_kbd">pref_key_open_kbd</string>
+	<!-- Behind the scenes -->
+	<item type="prefKey" name="first_run">pref_key_first_run</item>
+	<item type="prefKey" name="detected_number">pref_key_detected_number</item>
+	
+	<!-- General -->
+	<item type="prefKey" name="general_settings">pref_key_general_settings</item>
+	<item type="prefKey" name="language">pref_key_language</item>
+	<item type="prefKey" name="kbd_btns">pref_key_kbd_btns</item>
+	<item type="prefKey" name="notification">pref_key_notification</item>
+	
+	<!-- Contacts -->
+	<item type="prefKey" name="group_settings">pref_key_group_settings</item>
+	<item type="prefKey" name="own_number">pref_key_own_number</item>
+	<item type="prefKey" name="auto_add_contact">pref_key_auto_add_contact</item>
+	<item type="prefKey" name="contact_list">pref_key_contact_list</item>
+	
+	<!-- Fonts -->
+	<item type="prefKey" name="fonts_settings">pref_key_fonts_settings</item>
+	<item type="prefKey" name="font_lat">pref_key_font_lat</item>
+	<item type="prefKey" name="font_auk">pref_key_font_auk</item>
+	
+	<!-- Debug -->
+	<item type="prefKey" name="debug_settings">pref_key_debug_settings</item>
+	<item type="prefKey" name="send_to_self">pref_key_send_to_self</item>
 </resources>

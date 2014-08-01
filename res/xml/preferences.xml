@@ -1,73 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- DO NOT USE STANDARD NOTATION (@array/...) FOR TITLES AND SUMMARIES
+    	 Due to the way the language is changed, it is not required
+    	 and will in fact prevent the resource from being translated -->
     
     <PreferenceCategory 
-        android:title="@string/pref_general_title_latin"
-        android:key="@string/pref_key_general_settings">
+        android:title="pref_general_title"
+        android:key="@prefKey/general_settings">
+        <ListPreference
+            android:key="@prefKey/language"
+            android:title="pref_language_title"
+            android:summary="pref_language_summary"
+            android:defaultValue="RAU" />
         <CheckBoxPreference
-            android:key="@string/pref_key_kbd_btns"
-            android:title="@string/pref_kbd_btns_title_latin"
-            android:summary="@string/pref_kbd_btns_summary_latin"
-            android:defaultValue="true" />
-        <CheckBoxPreference
-            android:key="@string/pref_key_text_auk"
-            android:title="@string/pref_text_auk_title_latin"
-            android:summary="@string/pref_text_auk_summary_latin"
+            android:key="@prefKey/kbd_btns"
+            android:title="pref_kbd_btns_title"
+            android:summary="pref_kbd_btns_summary"
             android:defaultValue="true" />
         <RingtonePreference
-     		android:key="@string/pref_key_notification"
-     		android:title="@string/pref_notification_title_latin"
-            android:summary="@string/pref_notification_summary_latin"
+     		android:key="@prefKey/notification"
+     		android:title="pref_notification_title"
+            android:summary="pref_notification_summary"
      		android:ringtoneType="notification"
      		android:showDefault="true"
      		android:defaultValue="content://settings/system/notification_sound" />
     </PreferenceCategory>
     
     <PreferenceCategory 
-        android:title="@string/pref_group_title_latin"
-        android:key="@string/pref_key_group_settings">
+        android:title="pref_group_title"
+        android:key="@prefKey/group_settings">
         <EditTextPreference 
-            android:key="@string/pref_key_own_number"
-            android:title="@string/pref_own_number_title_latin"
-            android:summary="@string/pref_own_number_summary_latin"
+            android:key="@prefKey/own_number"
+            android:title="pref_own_number_title"
+            android:summary="pref_own_number_summary"
         	android:inputType="phone" 
             android:defaultValue="" />
         <CheckBoxPreference
-            android:key="@string/pref_key_auto_add_contact"
-            android:title="@string/pref_auto_add_contact_title_latin"
-            android:summary="@string/pref_auto_add_contact_summary_latin"
+            android:key="@prefKey/auto_add_contact"
+            android:title="pref_auto_add_contact_title"
+            android:summary="pref_auto_add_contact_summary"
             android:defaultValue="true" />
+        <!-- Create Contacts Screen before enabling
         <Preference 
-            android:key="@string/pref_key_contact_list"
-            android:title="@string/pref_contact_list_title_latin"
-            android:summary="@string/pref_contact_list_summary_latin" >
+            android:key="@prefKey/contact_list"
+            android:title="pref_contact_list_title"
+            android:summary="pref_contact_list_summary" >
 	            <intent android:action="alpvax.rau.android.ContactsActivity" />
 		</Preference>
+		-->
     </PreferenceCategory>
     
+    <!-- Create FontPreference before enabling
     <PreferenceCategory 
-        android:title="@string/pref_fonts_title_latin"
-        android:key="@string/pref_key_fonts_settings">
+        android:title="pref_fonts_title"
+        android:key="@prefKey/fonts_settings">
         <alpvax.rau.android.settings.FontPreference
-            android:key="@string/pref_key_font_lat"
-            android:title="@string/pref_font_lat_title_latin" 
-            android:summary="@string/pref_font_lat_summary_latin"
+            android:key="@prefKey/font_lat"
+            android:title="pref_font_lat_title" 
+            android:summary="pref_font_lat_summary"
             android:defaultValue="" />
         <alpvax.rau.android.settings.FontPreference
-            android:key="@string/pref_key_font_auk"
-            android:title="@string/pref_font_auk_title_latin" 
-            android:summary="@string/pref_font_auk_summary_latin"
+            android:key="@prefKey/font_auk"
+            android:title="pref_font_auk_title" 
+            android:summary="pref_font_auk_summary"
             android:defaultValue="" />
     </PreferenceCategory>
+    -->
     
     <PreferenceCategory 
-        android:title="@string/pref_debug_title_latin"
-        android:key="@string/pref_key_debug_settings">
+        android:title="pref_debug_title"
+        android:key="@prefKey/debug_settings">
         <CheckBoxPreference
-            android:key="@string/pref_key_send_to_self"
-            android:title="@string/pref_send_to_self_title_latin"
-            android:summary="@string/pref_send_to_self_summary_latin"
+            android:key="@prefKey/send_to_self"
+            android:title="pref_send_to_self_title"
+            android:summary="pref_send_to_self_summary"
             android:defaultValue="false" />
     </PreferenceCategory>
     

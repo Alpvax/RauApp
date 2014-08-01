@@ -6,21 +6,29 @@
 
     <uses-sdk
         android:minSdkVersion="15"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="20" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name_latin"
+        android:label="@latinString/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name="alpvax.rau.MainActivity"
-            android:label="@string/app_name_latin" >
+            android:label="@latinString/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="alpvax.rau.util.settings.SettingsFragment$SettingsActivity"
+            android:label="@array/title_activity_settings"
+            android:parentActivityName="alpvax.rau.android.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="alpvax.rau.android.MainActivity" />
         </activity>
     </application>
 
