@@ -20,7 +20,7 @@ public class RauTextView extends TextView implements IRauText
 		{
 			setRauText(a.getString(R.styleable.RauButton_rauText));
 	    	setLatinText(a.getString(R.styleable.RauButton_latinText));
-	    	setCurrentLang(EnumLanguage.get(a.getInt(R.styleable.RauButton_defaultLang, /*TODO: get from settings*/0)));
+	    	setCurrentLang(EnumLanguage.get(a.getInt(R.styleable.RauTextView_language, /*TODO: get from settings*/0)));
 		}
 		finally
 		{

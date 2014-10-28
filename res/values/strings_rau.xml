@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="rauString" name="app_name">&#xE10F;</item>
+    <item type="rauString" name="app_name">&#xE200;&#xE10F;</item>
     
     <item type="rauString" name="title_messages">Messages</item>
     <item type="rauString" name="title_compose">Compose</item>
-    <item type="rauString" name="title_dictionary">&#xE020;&#xE016;&#xE004;</item>
+    <item type="rauString" name="title_dictionary">&#xE200;&#xE020;&#xE016;&#xE004;</item>
     <item type="rauString" name="title_chatcontacts">Conversations</item>
     <item type="rauString" name="title_chat">Chat</item>
     <item type="rauString" name="title_activity_settings">Settings</item>
-    <item type="rauString" name="title_activity_contacts">Contacts</item>
+    <item type="rauString" name="title_activity_contacts">TESTING</item>
     
     <item type="rauString" name="action_settings">Settings</item>
     

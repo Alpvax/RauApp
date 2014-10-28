@@ -11,11 +11,9 @@ import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -58,14 +56,20 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.main, menu);
-		SubMenu sub = menu.addSubMenu("Test");
-		sub.add("Moar Test");
-		Log.d("Menu Size", "" + menu.size());
-		sub.add("Moar Test");
-		sub.add("Moar Test");
-		Log.d("Menu Size After Adding", "" + menu.size());
-		menu.findItem(R.id.action_settings).setTitle(AppUtils.instance(this).getText(R.array.action_settings));
+		//recursiveMenu(menu);
 		return true;
+	}
+	private void recursiveMenu(Menu menu)
+	{
+		for(int i = 0; i < menu.size(); i++)
+		{
+			MenuItem m = menu.getItem(i);
+			m.setTitle(AppUtils.instance(this).getText(m.getTitle()));
+			if(m.hasSubMenu())
+			{
+				recursiveMenu(m.getSubMenu());
+			}
+		}
 	}
 
 	@Override
@@ -97,13 +101,14 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	protected void onStart()
 	{
 	    super.onStart();
-	    viewPager.setCurrentItem(AppConstants.instance(getResources()).START_TAB);
+	    viewPager.setCurrentItem(AppConstants.START_TAB);
 	}
 	
 	@Override
 	protected void onResume()
 	{
 		super.onResume();
+		invalidateOptionsMenu();
 	}
 
 	/**

@@ -18,8 +18,7 @@
 	
 	<!-- Fonts -->
 	<item type="prefKey" name="fonts_settings">pref_key_fonts_settings</item>
-	<item type="prefKey" name="font_lat">pref_key_font_lat</item>
-	<item type="prefKey" name="font_auk">pref_key_font_auk</item>
+	<item type="prefKey" name="font_prefix">pref_key_font_</item>
 	
 	<!-- Debug -->
 	<item type="prefKey" name="debug_settings">pref_key_debug_settings</item>

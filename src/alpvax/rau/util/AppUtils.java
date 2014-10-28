@@ -1,9 +1,10 @@
 package alpvax.rau.util;
 
+import alpvax.rau.text.TextFormatter;
 import alpvax.rau.util.settings.SettingsHelper;
 import android.content.Context;
 import android.content.res.Resources;
-import android.util.Log;
+import android.content.res.Resources.NotFoundException;
 
 public class AppUtils
 {	
@@ -23,39 +24,39 @@ public class AppUtils
 	}
 	
 	public Context appContext;
-	public SettingsHelper settings;
 	
 	private AppUtils(Context c)
 	{
 		appContext = c.getApplicationContext();
-		settings = SettingsHelper.instance(appContext);
+		AppConstants.init(c);
 	}
 
 	public CharSequence getText(int resID)
 	{
-		return formatText(getTextFromResource(resID));
+		return formatText(getString(resID));
 	}
-	private String getTextFromResource(int resID)
+	private String getString(int resID)
 	{
 		if(resID == 0)
 		{
 			return "Invalid Resource ID: 0";// + resID;
 		}
 		Resources r = appContext.getResources();
-		Log.d("Getting String:", r.getResourceName(resID));
-		String[] s = r.getStringArray(resID);
-		int i = 0;
-		for(String s1 : s)
+		try
 		{
-			Log.d("Getting String [" + i++ + "]", s1);
+			String[] s = r.getStringArray(resID);
+			if(s.length > 1)
+			{
+				return s[SettingsHelper.instance(appContext).getLanguage().ordinal()];
+			}
+			if(s.length > 0)
+			{
+				return s[0];
+			}
 		}
-		if(s.length > 1)
+		catch(NotFoundException e)
 		{
-			return s[settings.getLanguage().ordinal()];
-		}
-		if(s.length > 0)
-		{
-			return s[0];
+			return r.getString(resID);
 		}
 		return "Missing String Resource: " + resID;
 	}
@@ -69,8 +70,11 @@ public class AppUtils
 	
 	public CharSequence formatText(CharSequence text)
 	{
-		//TODO: Add TypeFaces and implement formatting
-		Log.i("Translated String", text.toString());
-		return text;
+		/*for(int i = 0; i < text.length(); i++)
+		{
+			
+		}
+		return text;*/
+		return new TextFormatter(text);
 	}
 }

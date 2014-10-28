@@ -2,9 +2,9 @@
 <resources>
     <string name="latin">Latin</string>
     
-    <string name="aukaa">&#xE000;&#xE002;&#xE004;</string>
-    <string name="rau">&#xE016;&#xE000;&#xE002;</string>
-    
+    <string name="aukaa">&#xE200;&#xE000;&#xE002;&#xE004;</string>
+    <string name="rau">&#xE200;&#xE016;&#xE000;&#xE002;</string>
+        
     
     <string-array name="app_name">
         <item>@latinString/app_name</item>

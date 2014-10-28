@@ -1,31 +1,25 @@
 package alpvax.rau.util;
 
 import alpvax.rau.R;
+import android.content.Context;
 import android.content.res.Resources;
 
 public class AppConstants
 {
-	private static AppConstants instance = null;
 	
-	public static AppConstants instance(Resources resources)
+	public static String PORT;
+	public static int START_TAB;
+	public static String DEF_AUK_TF_PATH;
+	public static String ESCAPE_LANG;
+	public static String ESCAPE_FORMAT;
+	
+	public static void init(Context c)
 	{
-		if(instance == null)
-		{
-			if(resources == null)
-			{
-				throw new IllegalArgumentException("Cannot create an instance without a valid resources object.");
-			}
-			instance = new AppConstants(resources);
-		}
-		return instance;
-	}
-	
-	public final String PORT;
-	public final int START_TAB;
-	
-	private AppConstants(Resources r)
-	{
+		Resources r = c.getResources();
 		PORT = r.getString(R.string.port);
 		START_TAB = r.getInteger(R.integer.start_tab);
+		DEF_AUK_TF_PATH = r.getString(R.string.def_auk_font);
+		ESCAPE_LANG = r.getString(R.string.escape_lang);
+		ESCAPE_FORMAT = r.getString(R.string.escape_format);
 	}
 }

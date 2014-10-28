@@ -5,14 +5,16 @@ import alpvax.rau.util.AppUtils;
 
 public enum EnumLanguage
 {
-	LATIN(R.string.latin),
-	RAU(R.string.rau);
-	public static EnumLanguage[] values = values();
+	LATIN(R.string.latin, "latin", "english"),
+	RAU(R.string.rau, "aukaa", "auk", "rau");
+	public static final EnumLanguage[] values = values();
 	
 	private int label;
-	private EnumLanguage(int resID)
+	public String[] dirNames;//TODO: implement directory recognition
+	private EnumLanguage(int resID, String... dirAliases)
 	{
 		label = resID;
+		dirNames = dirAliases;
 	}
 	
 	@Override
@@ -37,7 +39,7 @@ public enum EnumLanguage
 	{
 		for(EnumLanguage e : values)
 		{
-			if(e.name().equals(name))
+			if(e.name().equals(name) || e.toString().equalsIgnoreCase(name))
 			{
 				return e;
 			}

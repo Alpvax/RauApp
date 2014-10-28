@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-   <attr name="defaultLang" >
+   <attr name="language" >
        <enum name="rau" value="0"/>
        <enum name="aukaa" value="0"/>
        <enum name="auk" value="0"/>
@@ -12,19 +12,19 @@
    <attr name="textRes" format="reference"/>
    
    <declare-styleable name="RauButton">
-       <attr name="defaultLang"/>
+       <attr name="language"/>
        <attr name="rauText"/>
        <attr name="latinText"/>
        <attr name="textRes"/>
    </declare-styleable>
    <declare-styleable name="RauTextView">
-       <attr name="defaultLang"/>
+       <attr name="language"/>
        <attr name="rauText"/>
        <attr name="latinText"/>
        <attr name="textRes"/>
    </declare-styleable>
    <declare-styleable name="RauEditText">
-       <attr name="defaultLang"/>
+       <attr name="language"/>
        <attr name="rauText"/>
        <attr name="latinText"/>
        <attr name="textRes"/>
@@ -33,7 +33,7 @@
        <attr name="textRes"/>
    </declare-styleable>
    
-   <declare-styleable name="EnumPreference">
-       <attr name="enumPath" format="reference"/>
+   <declare-styleable name="FontPreference">
+       <attr name="language"/>
    </declare-styleable>
 </resources>

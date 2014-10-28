@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="port">8068</string>
+    <integer name="version_code">1</integer>
+    <string name="version_name">1.0</string>
+    <string name="port">8067</string>
     <integer name="start_tab">1</integer>
+    <string name="def_auk_font">auhkahNarrow</string>
+    <string name="escape_lang">&#xE200;</string>
+    <string name="escape_format">&#xE201;</string>
 </resources>

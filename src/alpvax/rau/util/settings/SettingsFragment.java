@@ -3,12 +3,13 @@ package alpvax.rau.util.settings;
 import alpvax.rau.R;
 import alpvax.rau.text.EnumLanguage;
 import alpvax.rau.util.AppUtils;
+import alpvax.rau.util.fonts.FontPreference;
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.ListPreference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 
@@ -19,12 +20,25 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 	{
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
+        Activity a = getActivity();
+        SettingsHelper.instance(a);
+        PreferenceCategory fonts = (PreferenceCategory)findPreference(a.getString(R.prefKey.fonts_settings));
+        for(int i = 0; i < EnumLanguage.values.length; i++)
+        {
+        	EnumLanguage lang = EnumLanguage.values[i];
+        	FontPreference pref = new FontPreference(a);
+        	pref.setKey(SettingsHelper.KEY_FONT_PREFIX + lang.name());
+        	pref.setTitle(AppUtils.instance(a).formatText(lang.toString()));
+        	pref.setLang(lang);
+        	pref.setSummary(pref.getFontName());
+        	fonts.addPreference(pref);
+        }
         ListPreference p = (ListPreference)findPreference(SettingsHelper.KEY_LANGUAGE);
         p.setEntries(new String[]{EnumLanguage.LATIN.toString(), EnumLanguage.RAU.toString()});
         p.setEntryValues(new String[]{EnumLanguage.LATIN.name(), EnumLanguage.RAU.name()});
         //p.setValueIndex(1);
-        Context c = getActivity();
-        SettingsHelper.updateAll(getPreferenceManager(), c);
+        SettingsHelper.updateLabels(getPreferenceManager(), a);
+        a.setTitle(AppUtils.instance(a).getText(R.array.title_activity_settings));
     }
 	
 	@Override
@@ -49,7 +63,7 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 		if(key == SettingsHelper.KEY_LANGUAGE)
 		{
 	        Activity a = getActivity();
-	        SettingsHelper.updateAll(getPreferenceManager(), a);
+	        SettingsHelper.updateLabels(getPreferenceManager(), a);
 	        a.setTitle(AppUtils.instance(a).getText(R.array.title_activity_settings));
 		}
 	}

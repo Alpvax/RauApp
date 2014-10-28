@@ -2,11 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="alpvax.rau.MainActivity" >
 
-    <!-- Can use anything as the title, as it will be replaced at runtime -->
+    <!-- DO NOT USE @array/ notation -->
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="ifRoom"
-        android:title="@array/action_settings"/>
+        android:title="action_settings"/>
 
 </menu>

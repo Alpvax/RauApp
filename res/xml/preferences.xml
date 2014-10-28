@@ -51,10 +51,10 @@
 		-->
     </PreferenceCategory>
     
-    <!-- Create FontPreference before enabling
     <PreferenceCategory 
         android:title="pref_fonts_title"
         android:key="@prefKey/fonts_settings">
+    <!-- Create FontPreference before enabling
         <alpvax.rau.android.settings.FontPreference
             android:key="@prefKey/font_lat"
             android:title="pref_font_lat_title" 
@@ -65,8 +65,8 @@
             android:title="pref_font_auk_title" 
             android:summary="pref_font_auk_summary"
             android:defaultValue="" />
-    </PreferenceCategory>
     -->
+    </PreferenceCategory>
     
     <PreferenceCategory 
         android:title="pref_debug_title"
