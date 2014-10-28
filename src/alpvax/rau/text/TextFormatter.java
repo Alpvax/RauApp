@@ -13,10 +13,21 @@ import android.text.style.TypefaceSpan;
 public class TextFormatter extends SpannableString
 {
 	private static final String DEFAULT_FAMILY = "monospace";
+	private static final String tagExp = "(" + ESCAPE_LANG + "(a|l))|(" + ESCAPE_FORMAT + "(u|p))";
 
 	public TextFormatter(CharSequence taggedString)
 	{
-		super(new TagStripper(taggedString.toString()));
+		super(taggedString.toString().replaceAll(tagExp, ""));
+		//Allows for existing spans to be kept and passed into the new CharSequence
+		if(taggedString instanceof Spannable)
+		{
+			Spannable s = (Spannable)taggedString;
+			for(Object o : s.getSpans(0, s.length(), Object.class))
+			{
+				setSpan(o, s.getSpanStart(o), s.getSpanEnd(o), s.getSpanFlags(o));
+			}
+		}
+		//TODO Make all matching use regEx
 		String string = taggedString.toString();
 		int i;
 		int j = 1;//Set to >0 to enable
@@ -53,110 +64,6 @@ public class TextFormatter extends SpannableString
 				setSpan(t.newSpan(), start, start + len, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 			}
 			start += len;
-		}
-		/*String key = ESCAPE_LANG;
-		String[] strings = taggedString.toString().split(key);
-		int start = 0;
-		int end = 0;
-		for(String s : strings)
-		{
-			if(s.length() > 0)
-			{
-				char c = s.charAt(0);
-				switch(c)
-				{
-				case 'a'://auk
-					break;
-				case 'l'://latin
-					break;
-				case 'e'://escape
-					break;
-				}
-			}
-		}*/
-	}
-	
-	private static class TagStripper implements CharSequence
-	{
-		private StringBuilder text;
-
-		public TagStripper(String string)
-		{
-			this(string, ESCAPE_LANG, ESCAPE_FORMAT);
-		}
-		private TagStripper(String string, String... tags)
-		{
-			text = null;
-			for(String tag : tags)
-			{
-				if(text != null)
-				{
-					string = text.toString();
-				}
-				text = new StringBuilder();
-				int i = string.indexOf(tag);
-				if(i < 0)
-				{
-					text.append(string);
-					continue;
-				}
-				if(i > 0)
-				{
-					text.append(string.substring(0, i));
-				}
-				while((i = string.indexOf(tag)) >= 0)
-				{
-					if(i < 0)
-					{
-						return;
-					}
-					i += tag.length();
-					switch(string.charAt(i))//TODO: Organise and use variables for case statements
-					{
-					case 'e':
-						text.append(ESCAPE_LANG);
-						break;
-					case 'f':
-						text.append(ESCAPE_FORMAT);
-						break;
-					}
-					int j = string.indexOf(tag, i + 1);
-					if(j < 0)
-					{
-						text.append(string.substring(i + 1));
-						break;
-					}
-					else
-					{
-						text.append(string.substring(i + 1, j));
-						string = string.substring(j);
-					}
-				}
-			}
-		}
-
-		@Override
-		public int length()
-		{
-			return text.length();
-		}
-
-		@Override
-		public char charAt(int index)
-		{
-			return text.charAt(index);
-		}
-
-		@Override
-		public CharSequence subSequence(int start, int end)
-		{
-			return text.subSequence(start, end);
-		}
-		
-		@Override
-		public String toString()
-		{
-			return text.toString();
 		}
 	}
 	

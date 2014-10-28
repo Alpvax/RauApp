@@ -1,5 +1,6 @@
 bin
 libs
 .metadata
+.settings
 gen
 /lint.xml
