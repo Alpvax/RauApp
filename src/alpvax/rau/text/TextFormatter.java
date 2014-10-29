@@ -2,7 +2,10 @@ package alpvax.rau.text;
 
 import static alpvax.rau.util.AppConstants.ESCAPE_FORMAT;
 import static alpvax.rau.util.AppConstants.ESCAPE_LANG;
-import alpvax.rau.util.settings.SettingsHelper;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.text.Spannable;
@@ -13,11 +16,52 @@ import android.text.style.TypefaceSpan;
 public class TextFormatter extends SpannableString
 {
 	private static final String DEFAULT_FAMILY = "monospace";
-	private static final String tagExp = "(" + ESCAPE_LANG + "(a|l))|(" + ESCAPE_FORMAT + "(u|p))";
+	private static final String tagExp = "(" + ESCAPE_LANG + getLangExPart() + ")|(" + ESCAPE_FORMAT + getFormatExPart() + ")";
+
+	private static String getLangExPart()
+	{
+		StringBuilder sb = new StringBuilder("(");
+		boolean first = true;
+		for(EnumLanguage l : EnumLanguage.values)
+		{
+			if(first)
+			{
+				first = false;
+			}
+			else
+			{
+				sb.append("|");
+			}
+			sb.append(l.getKey());
+		}
+		return sb.append(")").toString();
+	}
+
+	private static String getFormatExPart()
+	{
+		/*TODO:StringBuilder sb = new StringBuilder("(");
+		boolean first = true;
+		for(EnumTextFormat t : EnumTextFormat.values)
+		{
+			if(first)
+			{
+				first = false;
+			}
+			else
+			{
+				sb.append("|");
+			}
+			sb.append(t.getKey());
+		}
+		return sb.append(")").toString();*/
+		return "(u|p)";
+	}
 
 	public TextFormatter(CharSequence taggedString)
 	{
-		super(taggedString.toString().replaceAll(tagExp, ""));
+		super(taggedString.toString().replaceAll(tagExp, "")
+		//escaped ESCAPE_LANG and ESCAPE_FORMAT is "ESCAPED_<type>e"
+		.replaceAll(ESCAPE_LANG + "e", ESCAPE_LANG).replaceAll(ESCAPE_FORMAT + "e", ESCAPE_FORMAT));
 		//Allows for existing spans to be kept and passed into the new CharSequence
 		if(taggedString instanceof Spannable)
 		{
@@ -27,7 +71,23 @@ public class TextFormatter extends SpannableString
 				setSpan(o, s.getSpanStart(o), s.getSpanEnd(o), s.getSpanFlags(o));
 			}
 		}
-		//TODO Make all matching use regEx
+		String pattern = "(?<=" + ESCAPE_LANG + ")(l|r).+?(?=(" + ESCAPE_LANG + "|$))";
+		Pattern p = Pattern.compile(pattern);
+		Matcher m = p.matcher(taggedString.toString());
+		System.out.println("Matching \"" + pattern + "\" against \"" + taggedString.toString() + "\"");
+		int i = 0;
+		while(m.find())
+		{
+			String type = m.group().substring(0, 1);
+			String s = m.group().substring(1);
+			System.out.println(type + ": " + s);
+			int start = i;
+			int end = i += s.length();
+			String s1 = subSequence(start, end).toString();
+			System.out.printf("\"%1$s\" %3$s \"%2$s\"%n", s, s1, s.equals(s1) ? "equals" : "does not equal");
+			setSpan(EnumLanguage.fromKey(type).getFontFactory().newSpan(), start, end, SPAN_EXCLUSIVE_EXCLUSIVE);
+		}
+		/*//TODO Make all matching use regEx
 		String string = taggedString.toString();
 		int i;
 		int j = 1;//Set to >0 to enable
@@ -64,7 +124,7 @@ public class TextFormatter extends SpannableString
 				setSpan(t.newSpan(), start, start + len, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 			}
 			start += len;
-		}
+		}*/
 	}
 	
 	public static class TypefaceSpanFactory
