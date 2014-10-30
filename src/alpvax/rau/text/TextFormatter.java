@@ -146,6 +146,11 @@ public class TextFormatter extends SpannableString
         {
         	return new CustomTypefaceSpan(family, font);
         }
+        
+        public Typeface getTypeface()
+        {
+        	return font;
+        }
 	}
 	
 	private static class CustomTypefaceSpan extends TypefaceSpan

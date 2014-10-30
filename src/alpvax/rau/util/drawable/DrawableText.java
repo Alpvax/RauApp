@@ -20,7 +20,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package alpvax.rau.util;
+package alpvax.rau.util.drawable;
 
 import android.content.Context;
 import android.content.res.ColorStateList;

@@ -6,7 +6,7 @@ import java.util.List;
 
 import alpvax.rau.R;
 import alpvax.rau.text.EnumLanguage;
-import alpvax.rau.util.AppUtils;
+import alpvax.rau.util.TranslateUtils;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -77,7 +77,7 @@ public class FontPreference extends ListPreference implements DialogInterface.On
         fontPaths = new ArrayList<>();
         fontPaths.add("");
         fontNames = new ArrayList<>();
-        fontNames.add(AppUtils.instance(getContext()).getText(R.array.Default));
+        fontNames.add(TranslateUtils.getText(R.array.Default));
  
         // Get the current value to find the checked item
         String selectedFontPath = getValue();//getSharedPreferences().getString(getKey(), "");

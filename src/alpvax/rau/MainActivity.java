@@ -1,7 +1,7 @@
 package alpvax.rau;
 
 import alpvax.rau.util.AppConstants;
-import alpvax.rau.util.AppUtils;
+import alpvax.rau.util.TranslateUtils;
 import alpvax.rau.util.settings.SettingsFragment.SettingsActivity;
 import android.app.Activity;
 import android.app.Fragment;
@@ -64,7 +64,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 		for(int i = 0; i < menu.size(); i++)
 		{
 			MenuItem m = menu.getItem(i);
-			m.setTitle(AppUtils.instance(this).getText(m.getTitle()));
+			m.setTitle(TranslateUtils.getText(m.getTitle()));
 			if(m.hasSubMenu())
 			{
 				recursiveMenu(m.getSubMenu());
@@ -169,7 +169,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 		
 		public CharSequence getTitle()
 		{
-			return AppUtils.instance(getApplication()).getText(title);
+			return TranslateUtils.getText(title);
 		}
 		
 		public Fragment newFragment() throws InstantiationException, IllegalAccessException
@@ -216,7 +216,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 		public void onResume()
 		{
 			super.onResume();
-			text.setText(AppUtils.instance(getActivity()).getText(((Integer)text.getTag()).intValue()));
+			text.setText(TranslateUtils.getText(((Integer)text.getTag()).intValue()));
 		}
 	}
 

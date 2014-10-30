@@ -4,13 +4,13 @@ import java.util.Locale;
 
 import alpvax.rau.R;
 import alpvax.rau.text.TextFormatter.TypefaceSpanFactory;
-import alpvax.rau.util.AppUtils;
+import alpvax.rau.util.TranslateUtils;
 import android.graphics.Typeface;
 
 public enum EnumLanguage
 {
-	LATIN(R.string.latin, "l", Typeface.DEFAULT), //"latin", "english"),
-	RAU(R.string.rau, "r", null);//"aukaa", "auk", "rau");
+	LATIN(R.string.latin, "l"), //"latin", "english"),
+	RAU(R.string.rau, "r");//"aukaa", "auk", "rau");
 	public static final EnumLanguage[] values = values();
 
 	private final int label;
@@ -18,7 +18,7 @@ public enum EnumLanguage
 	private TypefaceSpanFactory fontFactory;
 	public String[] dirNames;//TODO: implement directory recognition
 
-	private EnumLanguage(int resID, String key, Typeface t)
+	private EnumLanguage(int resID, String key)
 	{
 		label = resID;
 		if(key.length() > 1)
@@ -26,7 +26,6 @@ public enum EnumLanguage
 			System.err.println("Key length must be 1, recieved \"" + key + "\". Using \"" + key.substring(0, 1) + "\"");
 		}
 		langKey = key.substring(0, 1);
-		setFont(t);
 		dirNames = new String[]{name().toLowerCase(Locale.UK)};
 	}
 
@@ -50,13 +49,12 @@ public enum EnumLanguage
 		fontFactory = new TypefaceSpanFactory(t);
 	}
 
-
 	@Override
 	public String toString()
 	{
 		try
 		{
-			return AppUtils.instance(null).appContext.getString(label);
+			return TranslateUtils./*instance(null).appContext.*/getString(label);
 		}
 		catch(IllegalArgumentException e)
 		{

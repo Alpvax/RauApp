@@ -6,14 +6,13 @@ import android.content.res.Resources;
 
 public class AppConstants
 {
-	
 	public static String PORT;
 	public static int START_TAB;
 	public static String DEF_AUK_TF_PATH;
 	public static String ESCAPE_LANG;
 	public static String ESCAPE_FORMAT;
 	
-	public static void init(Context c)
+	protected AppConstants(Context c)
 	{
 		Resources r = c.getResources();
 		PORT = r.getString(R.string.port);
