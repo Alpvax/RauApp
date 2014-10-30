@@ -39,7 +39,8 @@ public class TextFormatter extends SpannableString
 
 	private static String getFormatExPart()
 	{
-		/*TODO:StringBuilder sb = new StringBuilder("(");
+		/*TODO:Create EnumFormat
+		StringBuilder sb = new StringBuilder("(");
 		boolean first = true;
 		for(EnumTextFormat t : EnumTextFormat.values)
 		{
@@ -87,8 +88,7 @@ public class TextFormatter extends SpannableString
 			System.out.printf("\"%1$s\" %3$s \"%2$s\"%n", s, s1, s.equals(s1) ? "equals" : "does not equal");
 			setSpan(EnumLanguage.fromKey(type).getFontFactory().newSpan(), start, end, SPAN_EXCLUSIVE_EXCLUSIVE);
 		}
-		/*//TODO Make all matching use regEx
-		String string = taggedString.toString();
+		/*String string = taggedString.toString();
 		int i;
 		int j = 1;//Set to >0 to enable
 		int start = 0;
@@ -100,7 +100,7 @@ public class TextFormatter extends SpannableString
 			}
 			i += ESCAPE_LANG.length();
 			TypefaceSpanFactory t = null;
-			switch(string.charAt(i))//TODO: Organise and use variables for case statements
+			switch(string.charAt(i))
 			{
 			case 'a':
 				t = new TypefaceSpanFactory(SettingsHelper.instance(null).aukTypeface());

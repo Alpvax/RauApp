@@ -16,7 +16,7 @@ public enum EnumLanguage
 	private final int label;
 	private final String langKey;
 	private TypefaceSpanFactory fontFactory;
-	public String[] dirNames;//TODO: implement directory recognition
+	public String[] dirNames;
 
 	private EnumLanguage(int resID, String key)
 	{
