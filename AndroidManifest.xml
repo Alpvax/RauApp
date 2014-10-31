@@ -6,24 +6,33 @@
 
     <uses-sdk
         android:minSdkVersion="16"
-        android:targetSdkVersion="20" />
+        android:targetSdkVersion="21" />
     
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="alpvax.rau.AppStart"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@latinString/app_name"
         android:theme="@style/AppTheme" >
+        <!-- android:name="alpvax.rau.AppStart" > -->
         <activity
-            android:name="alpvax.rau.MainActivity"
+            android:name="alpvax.rau.SplashActivity"
             android:label="@latinString/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="alpvax.rau.MainActivity"
+            android:label="@latinString/app_name" >
+            <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> -->
         </activity>
         <activity
             android:name="alpvax.rau.util.settings.SettingsFragment$SettingsActivity"

@@ -1,6 +1,5 @@
 package alpvax.rau.util.drawable;
 
-import alpvax.rau.core.Runes.Rune;
 import alpvax.rau.text.EnumLanguage;
 import android.content.Context;
 import android.graphics.Canvas;
