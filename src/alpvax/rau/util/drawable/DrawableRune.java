@@ -7,10 +7,10 @@ import android.graphics.Canvas;
 
 public class DrawableRune extends DrawableText
 {
-	public DrawableRune(Context context, Rune rune)
+	public DrawableRune(Context context, CharSequence runes)
 	{
 		super(context);
-		setText(rune.toString());
+		setText(runes.toString());
 	}
 
 	@Override
