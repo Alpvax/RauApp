@@ -1,39 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-   <attr name="language" >
-       <enum name="rau" value="0"/>
-       <enum name="aukaa" value="0"/>
-       <enum name="auk" value="0"/>
-       <enum name="latin" value="1"/>
-       <enum name="lat" value="1"/>
-   </attr>
-   <attr name="rauText" format="string"/>
-   <attr name="latinText" format="string"/>
-   <attr name="textRes" format="reference"/>
-   
-   <declare-styleable name="RauButton">
-       <attr name="language"/>
-       <attr name="rauText"/>
-       <attr name="latinText"/>
-       <attr name="textRes"/>
-   </declare-styleable>
-   <declare-styleable name="RauTextView">
-       <attr name="language"/>
-       <attr name="rauText"/>
-       <attr name="latinText"/>
-       <attr name="textRes"/>
-   </declare-styleable>
-   <declare-styleable name="RauEditText">
-       <attr name="language"/>
-       <attr name="rauText"/>
-       <attr name="latinText"/>
-       <attr name="textRes"/>
-   </declare-styleable>
-   <declare-styleable name="TextView">
-       <attr name="textRes"/>
-   </declare-styleable>
-   
    <declare-styleable name="FontPreference">
-       <attr name="language"/>
+       <attr name="language" >
+	       <enum name="rau" value="0"/>
+	       <enum name="aukaa" value="0"/>
+	       <enum name="auk" value="0"/>
+	       <enum name="latin" value="1"/>
+	       <enum name="lat" value="1"/>
+	   </attr>
    </declare-styleable>
 </resources>

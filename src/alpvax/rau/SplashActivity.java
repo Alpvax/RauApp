@@ -20,7 +20,7 @@ public class SplashActivity extends Activity implements TaskFinishedListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash_screen);
 
-		new AppLoadingTask(this).execute();
+		new AppLoadingTask(this).execute(this);
 
 		new Handler().postDelayed(new Runnable(){
 			@Override

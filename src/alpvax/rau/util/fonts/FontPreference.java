@@ -6,6 +6,7 @@ import java.util.List;
 
 import alpvax.rau.R;
 import alpvax.rau.text.EnumLanguage;
+import alpvax.rau.util.AppUtils;
 import alpvax.rau.util.TranslateUtils;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
@@ -36,15 +37,9 @@ public class FontPreference extends ListPreference implements DialogInterface.On
 	public FontPreference(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
-		TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.RauButton, 0, 0);
-		try
-		{
-	    	setLang(EnumLanguage.get(a.getInt(R.styleable.FontPreference_language, 0)));
-		}
-		finally
-		{
-			a.recycle();
-		}
+		TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.FontPreference, 0, 0);
+		setLang(EnumLanguage.get(a.getInt(R.styleable.FontPreference_language, 0)));
+		a.recycle();
 	}
  
     public void setLang(EnumLanguage lang)
@@ -62,7 +57,7 @@ public class FontPreference extends ListPreference implements DialogInterface.On
     	Log.d("FontName", "prefs: "+ getSharedPreferences());
     	Log.d("FontName", "value: "+ getValue());
     	int i = fontPaths.indexOf(getValue());
-    	return i >= 0 && i < fontNames.size() ? fontNames.get(i) : "";
+    	return i >= 0 && i < fontNames.size() ? fontNames.get(i) : "";//XXX:Maybe here, "" means Default
     }
     
     private int discoverFonts()
@@ -77,7 +72,7 @@ public class FontPreference extends ListPreference implements DialogInterface.On
         fontPaths = new ArrayList<>();
         fontPaths.add("");
         fontNames = new ArrayList<>();
-        fontNames.add(TranslateUtils.getText(R.array.Default));
+        fontNames.add(TranslateUtils.getText("Default"));
  
         // Get the current value to find the checked item
         String selectedFontPath = getValue();//getSharedPreferences().getString(getKey(), "");
@@ -124,6 +119,7 @@ public class FontPreference extends ListPreference implements DialogInterface.On
             String selectedFontPath = fontPaths.get(i);
             getSharedPreferences().edit().putString(getKey(), selectedFontPath).commit();
             setSummary(fontNames.get(i));
+            AppUtils.SETTINGS.updateLabels(getPreferenceManager());
             dialog.dismiss();
         }
     }

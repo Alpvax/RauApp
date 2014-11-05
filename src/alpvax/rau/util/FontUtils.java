@@ -11,11 +11,15 @@ public class FontUtils
 	
 	protected FontUtils(Context c)
 	{
-		def_fonts[EnumLanguage.LATIN.ordinal()] = Typeface.DEFAULT;
-		def_fonts[EnumLanguage.RAU.ordinal()] = Typeface.createFromAsset(c.getAssets(), "fonts/rau/" + AppConstants.DEF_AUK_TF_PATH + ".ttf");
+		def_fonts[EnumLanguage.RAU.ordinal()] = Typeface.createFromAsset(c.getAssets(), "fonts/rau/" + AppUtils.CONSTANTS.DEF_AUK_TF_PATH + ".ttf");
 		for(EnumLanguage lang : EnumLanguage.values)
 		{
-			font_paths[lang.ordinal()] =  AppUtils.SETTINGS.getFontPath(lang);
+			int i = lang.ordinal();
+			//font_paths[i] =  AppUtils.SETTINGS.getFontPath(lang);
+			if(def_fonts[i] == null)
+			{
+				def_fonts[i] = Typeface.DEFAULT;
+			}
 			setFont(lang);
 		}
 	}

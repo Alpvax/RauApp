@@ -8,7 +8,7 @@
         android:minSdkVersion="16"
         android:targetSdkVersion="21" />
     
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -36,7 +36,7 @@
         </activity>
         <activity
             android:name="alpvax.rau.util.settings.SettingsFragment$SettingsActivity"
-            android:label="@array/title_activity_settings"
+            android:label="@latinString/title_activity_settings"
             android:parentActivityName="alpvax.rau.android.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

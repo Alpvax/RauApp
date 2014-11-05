@@ -1,6 +1,7 @@
 package alpvax.rau;
 
-import alpvax.rau.util.AppConstants;
+import alpvax.rau.text.TextFormatter;
+import alpvax.rau.util.AppUtils;
 import alpvax.rau.util.TranslateUtils;
 import alpvax.rau.util.settings.SettingsFragment.SettingsActivity;
 import android.app.Activity;
@@ -101,7 +102,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	protected void onStart()
 	{
 	    super.onStart();
-	    viewPager.setCurrentItem(AppConstants.START_TAB);
+	    viewPager.setCurrentItem(AppUtils.CONSTANTS.START_TAB);
 	}
 	
 	@Override
@@ -118,10 +119,10 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	public class SectionsPagerAdapter extends FragmentPagerAdapter
 	{
 		private FragmentFactory[] fragments = {
-				new FragmentFactory(PlaceholderFragment.class, R.array.title_dictionary),
-				new FragmentFactory(PlaceholderFragment.class, R.array.title_messages),
-				new FragmentFactory(PlaceholderFragment.class, R.array.title_chatcontacts),
-				new FragmentFactory(PlaceholderFragment.class, R.array.title_chat)
+				new FragmentFactory(PlaceholderFragment.class, "title_dictionary"),
+				new FragmentFactory(PlaceholderFragment.class, "title_messages"),
+				new FragmentFactory(PlaceholderFragment.class, "title_chatcontacts"),
+				new FragmentFactory(PlaceholderFragment.class, "title_chat")
 		};
 
 		public SectionsPagerAdapter(FragmentManager fm)
@@ -159,17 +160,17 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	private class FragmentFactory
 	{
 		private Class<? extends Fragment> frag;
-		private int title;
+		private String title;
 
-		public FragmentFactory(Class<? extends Fragment> fragment, int titleID)
+		public FragmentFactory(Class<? extends Fragment> fragment, String titleKey)
 		{
 			frag = fragment;
-			title = titleID;
+			title = titleKey;
 		}
 		
 		public CharSequence getTitle()
 		{
-			return TranslateUtils.getText(title);
+			return new TextFormatter(TranslateUtils.getText(title));
 		}
 		
 		public Fragment newFragment() throws InstantiationException, IllegalAccessException
@@ -192,11 +193,11 @@ public class MainActivity extends Activity implements OnPageChangeListener
 		/**
 		 * Returns a new instance of this fragment for the given section number.
 		 */
-		public static PlaceholderFragment newInstance(int titleResID)
+		public static PlaceholderFragment newInstance(String titleKey)
 		{
 			PlaceholderFragment fragment = new PlaceholderFragment();
 			Bundle args = new Bundle();
-			args.putInt(ARG_TITLE, titleResID);
+			args.putCharSequence(ARG_TITLE, titleKey);
 			fragment.setArguments(args);
 			return fragment;
 		}
@@ -207,7 +208,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 		{
 			View rootView = inflater.inflate(R.layout.fragment_placeholder, container, false);
 			text = (TextView)rootView.findViewById(R.id.placeholderText);
-			text.setTag(getArguments().getInt(ARG_TITLE));
+			text.setTag(getArguments().getCharSequence(ARG_TITLE));
 			//text.setText(AppUtils.instance(getActivity()).getText(((Integer)text.getTag()).intValue()));
 			return rootView;
 		}
@@ -216,7 +217,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 		public void onResume()
 		{
 			super.onResume();
-			text.setText(TranslateUtils.getText(((Integer)text.getTag()).intValue()));
+			text.setText(new TextFormatter(TranslateUtils.getText((CharSequence)text.getTag())));
 		}
 	}
 

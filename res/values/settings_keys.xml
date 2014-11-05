@@ -7,11 +7,10 @@
 	<!-- General -->
 	<item type="prefKey" name="general_settings">pref_key_general_settings</item>
 	<item type="prefKey" name="language">pref_key_language</item>
-	<item type="prefKey" name="kbd_btns">pref_key_kbd_btns</item>
 	<item type="prefKey" name="notification">pref_key_notification</item>
 	
 	<!-- Contacts -->
-	<item type="prefKey" name="group_settings">pref_key_group_settings</item>
+	<item type="prefKey" name="messaging_settings">pref_key_messaging_settings</item>
 	<item type="prefKey" name="own_number">pref_key_own_number</item>
 	<item type="prefKey" name="auto_add_contact">pref_key_auto_add_contact</item>
 	<item type="prefKey" name="contact_list">pref_key_contact_list</item>

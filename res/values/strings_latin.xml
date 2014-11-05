@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item type="latinString" name="latin">Latin</item>
     <item type="latinString" name="app_name">RauApp</item>
     
     <item type="latinString" name="title_messages">Messages</item>

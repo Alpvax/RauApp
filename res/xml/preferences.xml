@@ -1,80 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android" >
-    <!-- DO NOT USE STANDARD NOTATION (@array/...) FOR TITLES AND SUMMARIES
-    	 Due to the way the language is changed, it is not required
-    	 and will in fact prevent the resource from being translated -->
+    <!-- Titles and Summaries are not required, and are generated from the key -->
     
     <PreferenceCategory 
-        android:title="pref_general_title"
         android:key="@prefKey/general_settings">
         <ListPreference
             android:key="@prefKey/language"
-            android:title="pref_language_title"
-            android:summary="pref_language_summary"
             android:defaultValue="RAU" />
-        <CheckBoxPreference
+        <!-- <CheckBoxPreference
             android:key="@prefKey/kbd_btns"
-            android:title="pref_kbd_btns_title"
-            android:summary="pref_kbd_btns_summary"
-            android:defaultValue="true" />
+            android:defaultValue="true" /> -->
         <RingtonePreference
      		android:key="@prefKey/notification"
-     		android:title="pref_notification_title"
-            android:summary="pref_notification_summary"
      		android:ringtoneType="notification"
      		android:showDefault="true"
      		android:defaultValue="content://settings/system/notification_sound" />
     </PreferenceCategory>
     
     <PreferenceCategory 
-        android:title="pref_group_title"
-        android:key="@prefKey/group_settings">
+        android:key="@prefKey/messaging_settings">
         <EditTextPreference 
             android:key="@prefKey/own_number"
-            android:title="pref_own_number_title"
-            android:summary="pref_own_number_summary"
         	android:inputType="phone" 
             android:defaultValue="" />
         <CheckBoxPreference
             android:key="@prefKey/auto_add_contact"
-            android:title="pref_auto_add_contact_title"
-            android:summary="pref_auto_add_contact_summary"
             android:defaultValue="true" />
         <!-- Create Contacts Screen before enabling
         <Preference 
-            android:key="@prefKey/contact_list"
-            android:title="pref_contact_list_title"
-            android:summary="pref_contact_list_summary" >
+            android:key="@prefKey/contact_list" >
 	            <intent android:action="alpvax.rau.android.ContactsActivity" />
 		</Preference>
 		-->
     </PreferenceCategory>
     
     <PreferenceCategory 
-        android:title="pref_fonts_title"
         android:key="@prefKey/fonts_settings">
-    <!-- Create FontPreference before enabling
-        <alpvax.rau.android.settings.FontPreference
-            android:key="@prefKey/font_lat"
-            android:title="pref_font_lat_title" 
-            android:summary="pref_font_lat_summary"
-            android:defaultValue="" />
-        <alpvax.rau.android.settings.FontPreference
-            android:key="@prefKey/font_auk"
-            android:title="pref_font_auk_title" 
-            android:summary="pref_font_auk_summary"
-            android:defaultValue="" />
-    -->
     </PreferenceCategory>
     
     <PreferenceCategory 
-        android:title="pref_debug_title"
         android:key="@prefKey/debug_settings">
         <CheckBoxPreference
             android:key="@prefKey/send_to_self"
-            android:title="pref_send_to_self_title"
-            android:summary="pref_send_to_self_summary"
             android:defaultValue="false" />
     </PreferenceCategory>
     

@@ -7,4 +7,5 @@
     <string name="def_auk_font">auhkahNarrow</string>
     <string name="escape_lang">&#xE200;</string>
     <string name="escape_format">&#xE201;</string>
+    <string name="missing_string">&#xE202;</string>
 </resources>

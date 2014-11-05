@@ -1,65 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="latin">Latin</string>
-    
-    <string name="aukaa">&#xE200;&#xE000;&#xE002;&#xE004;</string>
+    <!-- <string name="aukaa">&#xE200;&#xE000;&#xE002;&#xE004;</string> -->
     <string name="rau">&#xE200;&#xE016;&#xE000;&#xE002;</string>
-        
-    
-    <string-array name="app_name">
-        <item>@latinString/app_name</item>
-        <item>@rauString/app_name</item>
-    </string-array>
-    
-    <string-array name="title_messages">
-        <item>@latinString/title_messages</item>
-        <item>@rauString/title_messages</item>
-    </string-array>
-    <string-array name="title_compose">
-        <item>@latinString/title_compose</item>
-        <item>@rauString/title_compose</item>
-    </string-array>
-    <string-array name="title_dictionary">
-        <item>@latinString/title_dictionary</item>
-        <item>@rauString/title_dictionary</item>
-    </string-array>
-    <string-array name="title_chatcontacts">
-        <item>@latinString/title_chatcontacts</item>
-        <item>@rauString/title_chatcontacts</item>
-    </string-array>
-    <string-array name="title_chat">
-        <item>@latinString/title_chat</item>
-        <item>@rauString/title_chat</item>
-    </string-array>
-    <string-array name="title_activity_settings">
-        <item>@latinString/title_activity_settings</item>
-        <item>@rauString/title_activity_settings</item>
-    </string-array>
-    <string-array name="title_activity_contacts">
-        <item>@latinString/title_activity_contacts</item>
-        <item>@rauString/title_activity_contacts</item>
-    </string-array>
-    
-    <string-array name="action_settings">
-        <item>@latinString/action_settings</item>
-        <item>@rauString/action_settings</item>
-    </string-array>
-    
-    
-    <string-array name="phone_no_hint">
-        <item>@latinString/phone_no_hint</item>
-        <item>@rauString/phone_no_hint</item>
-    </string-array>
-    <string-array name="phoneno_dialog_title">
-        <item>@latinString/phoneno_dialog_title</item>
-        <item>@rauString/phoneno_dialog_title</item>
-    </string-array>
-    <string-array name="phoneno_dialog_message">
-        <item>@latinString/phoneno_dialog_message</item>
-        <item>@rauString/phoneno_dialog_message</item>
-    </string-array>
-    <string-array name="phoneno_verify_confirmed">
-        <item>@latinString/phoneno_verify_confirmed</item>
-        <item>@rauString/phoneno_verify_confirmed</item>
-    </string-array>
 </resources>

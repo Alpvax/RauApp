@@ -1,12 +1,37 @@
 package alpvax.rau.util;
 
-import alpvax.rau.text.TextFormatter;
+import java.util.Locale;
+
+import alpvax.rau.text.EnumLanguage;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
+import android.util.Log;
 
 public class TranslateUtils//TODO: Re-design translation
 {
+	public static CharSequence getText(CharSequence string)
+	{
+		return getText(string, AppUtils.SETTINGS.getLanguage());
+	}
+	public static CharSequence getText(CharSequence string, EnumLanguage lang)
+	{
+		Resources r = AppUtils.APP_CONTEXT.getResources();
+		int resID = r.getIdentifier(string.toString(), lang.name().toLowerCase(Locale.UK) + "String", "alpvax.rau");
+		try
+		{
+			Log.d("StringResource", r.getResourceName(resID));
+		}
+		catch(NotFoundException e)
+		{
+			Log.d("StringResource", "No resource found with id " + resID + ". (" + string + ")");
+		}
+		return resID != 0 ? lang.langEscape() + r.getText(resID) : String.format("%3$sMissing String Resource: \"%1$s\". (ID: %2$d)", string, resID, "");//AppUtils.CONSTANTS.MISSING_STRING));
+	}
 	public static CharSequence getText(int resID)
+	{
+		return getText(AppUtils.APP_CONTEXT.getResources().getResourceEntryName(resID));
+	}
+	/*public static CharSequence getText(int resID)
 	{
 		return formatText(getString(resID));
 	}
@@ -41,15 +66,5 @@ public class TranslateUtils//TODO: Re-design translation
 		int resID = AppUtils.APP_CONTEXT.getResources().getIdentifier(string.toString(), "array", "alpvax.rau");
 		//int resID = AppUtils.APP_CONTEXT.getResources().getIdentifier("alpvax.rau:array/" + string, null, null)
 		return resID > 0 ? getText(resID) : string;
-	}
-	
-	public static CharSequence formatText(CharSequence text)
-	{
-		/*for(int i = 0; i < text.length(); i++)
-		{
-			
-		}
-		return text;*/
-		return new TextFormatter(text);
-	}
+	}*/
 }

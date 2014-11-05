@@ -1,7 +1,7 @@
 package alpvax.rau.text;
 
-import static alpvax.rau.util.AppConstants.ESCAPE_FORMAT;
-import static alpvax.rau.util.AppConstants.ESCAPE_LANG;
+import static alpvax.rau.util.AppUtils.CONSTANTS;
+//import static alpvax.rau.util.AppUtils.CONSTANTS.ESCAPE_LANG;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,7 +16,7 @@ import android.text.style.TypefaceSpan;
 public class TextFormatter extends SpannableString
 {
 	private static final String DEFAULT_FAMILY = "monospace";
-	private static final String tagExp = "(" + ESCAPE_LANG + getLangExPart() + ")|(" + ESCAPE_FORMAT + getFormatExPart() + ")";
+	private static final String tagExp = "(" + CONSTANTS.ESCAPE_LANG + getLangExPart() + ")|(" + CONSTANTS.ESCAPE_FORMAT + getFormatExPart() + ")";
 
 	private static String getLangExPart()
 	{
@@ -61,8 +61,8 @@ public class TextFormatter extends SpannableString
 	public TextFormatter(CharSequence taggedString)
 	{
 		super(taggedString.toString().replaceAll(tagExp, "")
-		//escaped ESCAPE_LANG and ESCAPE_FORMAT is "ESCAPED_<type>e"
-		.replaceAll(ESCAPE_LANG + "e", ESCAPE_LANG).replaceAll(ESCAPE_FORMAT + "e", ESCAPE_FORMAT));
+				//escaped ESCAPE_LANG and ESCAPE_FORMAT is "ESCAPED_<type>e"
+				.replaceAll(CONSTANTS.ESCAPE_LANG + "e", CONSTANTS.ESCAPE_LANG).replaceAll(CONSTANTS.ESCAPE_FORMAT + "e", CONSTANTS.ESCAPE_FORMAT));
 		//Allows for existing spans to be kept and passed into the new CharSequence
 		if(taggedString instanceof Spannable)
 		{
@@ -72,7 +72,7 @@ public class TextFormatter extends SpannableString
 				setSpan(o, s.getSpanStart(o), s.getSpanEnd(o), s.getSpanFlags(o));
 			}
 		}
-		String pattern = "(?<=" + ESCAPE_LANG + ")(l|r).+?(?=(" + ESCAPE_LANG + "|$))";
+		String pattern = "(?<=" + CONSTANTS.ESCAPE_LANG + ")(l|r).+?(?=(" + CONSTANTS.ESCAPE_LANG + "|$))";
 		Pattern p = Pattern.compile(pattern);
 		Matcher m = p.matcher(taggedString.toString());
 		System.out.println("Matching \"" + pattern + "\" against \"" + taggedString.toString() + "\"");

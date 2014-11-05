@@ -2,25 +2,23 @@ package alpvax.rau.text;
 
 import java.util.Locale;
 
-import alpvax.rau.R;
 import alpvax.rau.text.TextFormatter.TypefaceSpanFactory;
+import alpvax.rau.util.AppUtils;
 import alpvax.rau.util.TranslateUtils;
 import android.graphics.Typeface;
 
 public enum EnumLanguage
 {
-	LATIN(R.string.latin, "l"), //"latin", "english"),
-	RAU(R.string.rau, "r");//"aukaa", "auk", "rau");
+	LATIN("l"), //"latin", "english"),
+	RAU("r");//"aukaa", "auk", "rau");
 	public static final EnumLanguage[] values = values();
 
-	private final int label;
 	private final String langKey;
 	private TypefaceSpanFactory fontFactory;
 	public String[] dirNames;
 
-	private EnumLanguage(int resID, String key)
+	private EnumLanguage(String key)
 	{
-		label = resID;
 		if(key.length() > 1)
 		{
 			System.err.println("Key length must be 1, recieved \"" + key + "\". Using \"" + key.substring(0, 1) + "\"");
@@ -39,6 +37,11 @@ public enum EnumLanguage
 	{
 		return langKey;
 	}
+
+	public String langEscape()
+	{
+		return AppUtils.CONSTANTS.ESCAPE_LANG + langKey;
+	}
 	
 	public TypefaceSpanFactory getFontFactory()
 	{
@@ -54,7 +57,18 @@ public enum EnumLanguage
 	{
 		try
 		{
-			return TranslateUtils./*instance(null).appContext.*/getString(label);
+			return TranslateUtils.getText(name().toLowerCase(Locale.UK)).toString();
+		}
+		catch(IllegalArgumentException e)
+		{
+			return super.toString();
+		}
+	}
+	public CharSequence formattedString()
+	{
+		try
+		{
+			return new TextFormatter(TranslateUtils.getText(name().toLowerCase(Locale.UK), this));
 		}
 		catch(IllegalArgumentException e)
 		{
@@ -70,7 +84,18 @@ public enum EnumLanguage
 	{
 		for(EnumLanguage e : values)
 		{
-			if(e.name().equals(name) || e.toString().equalsIgnoreCase(name))
+			if(e.name().equals(name))
+			{
+				return e;
+			}
+		}
+		return null;
+	}
+	public static EnumLanguage fromTranslated(String name)
+	{
+		for(EnumLanguage e : values)
+		{
+			if(e.toString().equalsIgnoreCase(name))
 			{
 				return e;
 			}
