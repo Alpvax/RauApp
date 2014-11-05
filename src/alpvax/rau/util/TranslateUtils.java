@@ -5,7 +5,6 @@ import java.util.Locale;
 import alpvax.rau.text.EnumLanguage;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
-import android.util.Log;
 
 public class TranslateUtils//TODO: Re-design translation
 {
@@ -19,11 +18,11 @@ public class TranslateUtils//TODO: Re-design translation
 		int resID = r.getIdentifier(string.toString(), lang.name().toLowerCase(Locale.UK) + "String", "alpvax.rau");
 		try
 		{
-			Log.d("StringResource", r.getResourceName(resID));
+			//Log.d("StringResource", r.getResourceName(resID));
 		}
 		catch(NotFoundException e)
 		{
-			Log.d("StringResource", "No resource found with id " + resID + ". (" + string + ")");
+			//Log.d("StringResource", "No resource found with id " + resID + ". (" + string + ")");
 		}
 		return resID != 0 ? lang.langEscape() + r.getText(resID) : String.format("%3$sMissing String Resource: \"%1$s\". (ID: %2$d)", string, resID, "");//AppUtils.CONSTANTS.MISSING_STRING));
 	}

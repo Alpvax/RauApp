@@ -15,7 +15,11 @@ import android.text.style.TypefaceSpan;
 
 public class TextFormatter extends SpannableString
 {
-	private static final String DEFAULT_FAMILY = "monospace";
+	/**
+     * The default font family used for creating a new typeface.
+     * Examples include "monospace", "serif", and "sans-serif".
+     */
+	private static final String DEFAULT_FAMILY = "sans-serif";
 	private static final String tagExp = "(" + CONSTANTS.ESCAPE_LANG + getLangExPart() + ")|(" + CONSTANTS.ESCAPE_FORMAT + getFormatExPart() + ")";
 
 	private static String getLangExPart()
@@ -73,58 +77,20 @@ public class TextFormatter extends SpannableString
 			}
 		}
 		String pattern = "(?<=" + CONSTANTS.ESCAPE_LANG + ")(l|r).+?(?=(" + CONSTANTS.ESCAPE_LANG + "|$))";
-		Pattern p = Pattern.compile(pattern);
-		Matcher m = p.matcher(taggedString.toString());
-		System.out.println("Matching \"" + pattern + "\" against \"" + taggedString.toString() + "\"");
+		Matcher m = Pattern.compile(pattern).matcher(taggedString.toString());
+		//System.out.println("Matching \"" + pattern + "\" against \"" + taggedString.toString() + "\"");
 		int i = 0;
 		while(m.find())
 		{
 			String type = m.group().substring(0, 1);
 			String s = m.group().substring(1);
-			System.out.println(type + ": " + s);
+			//System.out.println(type + ": " + s);
 			int start = i;
 			int end = i += s.length();
-			String s1 = subSequence(start, end).toString();
-			System.out.printf("\"%1$s\" %3$s \"%2$s\"%n", s, s1, s.equals(s1) ? "equals" : "does not equal");
+			//String s1 = subSequence(start, end).toString();
+			//System.out.printf("\"%1$s\" %3$s \"%2$s\"%n", s, s1, s.equals(s1) ? "equals" : "does not equal");
 			setSpan(EnumLanguage.fromKey(type).getFontFactory().newSpan(), start, end, SPAN_EXCLUSIVE_EXCLUSIVE);
 		}
-		/*String string = taggedString.toString();
-		int i;
-		int j = 1;//Set to >0 to enable
-		int start = 0;
-		while((i = string.indexOf(ESCAPE_LANG)) >= 0 && start < length())
-		{
-			if(i < 0)
-			{
-				return;
-			}
-			i += ESCAPE_LANG.length();
-			TypefaceSpanFactory t = null;
-			switch(string.charAt(i))
-			{
-			case 'a':
-				t = new TypefaceSpanFactory(SettingsHelper.instance(null).aukTypeface());
-				break;
-			case 'l':
-				t = new TypefaceSpanFactory(SettingsHelper.instance(null).latinTypeface());
-				break;
-			}
-			j = string.indexOf(ESCAPE_LANG, i + 1);
-			if(j < 0)
-			{
-				j = string.length();
-			}
-			else
-			{
-				string = string.substring(j);
-			}
-			int len = j - i - 1;
-			if(t != null)
-			{
-				setSpan(t.newSpan(), start, start + len, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-			}
-			start += len;
-		}*/
 	}
 	
 	public static class TypefaceSpanFactory

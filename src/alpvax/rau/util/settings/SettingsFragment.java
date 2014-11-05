@@ -62,11 +62,11 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 	{
         PreferenceManager pm = getPreferenceManager();
 		AppUtils.SETTINGS.update(pm.findPreference(key));
-		if(key == SettingsKeys.KEY_LANGUAGE)
+		if(key == SettingsKeys.KEY_LANGUAGE || key.startsWith(SettingsKeys.KEY_FONT_PREFIX))
 		{
 	        Activity a = getActivity();
 	        AppUtils.SETTINGS.updateLabels(getPreferenceManager());
-	        a.setTitle(TranslateUtils.getText("title_activity_settings"));
+	        a.setTitle(new TextFormatter(TranslateUtils.getText("title_activity_settings")));
 		}
 	}
 	

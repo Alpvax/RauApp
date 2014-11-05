@@ -57,7 +57,7 @@ public enum EnumLanguage
 	{
 		try
 		{
-			return TranslateUtils.getText(name().toLowerCase(Locale.UK)).toString();
+			return new TextFormatter(TranslateUtils.getText(name().toLowerCase(Locale.UK))).toString();
 		}
 		catch(IllegalArgumentException e)
 		{

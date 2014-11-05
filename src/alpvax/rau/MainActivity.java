@@ -65,7 +65,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 		for(int i = 0; i < menu.size(); i++)
 		{
 			MenuItem m = menu.getItem(i);
-			m.setTitle(TranslateUtils.getText(m.getTitle()));
+			m.setTitle(new TextFormatter(TranslateUtils.getText(m.getTitle())));//TODO:Menu
 			if(m.hasSubMenu())
 			{
 				recursiveMenu(m.getSubMenu());

@@ -18,7 +18,8 @@
         <!-- android:name="alpvax.rau.AppStart" > -->
         <activity
             android:name="alpvax.rau.SplashActivity"
-            android:label="@latinString/app_name" >
+            android:label="@latinString/app_name"
+        	android:theme="@style/AppTheme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
