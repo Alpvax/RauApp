@@ -3,4 +3,5 @@ libs
 .metadata
 .settings
 gen
-/lint.xml
+lint.xml
+LogCat
