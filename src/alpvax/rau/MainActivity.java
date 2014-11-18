@@ -2,6 +2,7 @@ package alpvax.rau;
 
 import alpvax.rau.text.TextFormatter;
 import alpvax.rau.util.AppUtils;
+import alpvax.rau.util.LGFixHelper;
 import alpvax.rau.util.TranslateUtils;
 import alpvax.rau.util.settings.SettingsFragment.SettingsActivity;
 import android.app.Activity;
@@ -41,6 +42,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		LGFixHelper.onCreate(this);
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the activity.
@@ -57,7 +59,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.main, menu);
-		//recursiveMenu(menu);
+		recursiveMenu(menu);
 		return true;
 	}
 	private void recursiveMenu(Menu menu)
@@ -65,7 +67,9 @@ public class MainActivity extends Activity implements OnPageChangeListener
 		for(int i = 0; i < menu.size(); i++)
 		{
 			MenuItem m = menu.getItem(i);
-			m.setTitle(new TextFormatter(TranslateUtils.getText(m.getTitle())));//TODO:Menu
+			String s = m.getTitleCondensed().toString();
+			m.setTitle(new TextFormatter(TranslateUtils.getText(s)));
+			m.setTitleCondensed(s);
 			if(m.hasSubMenu())
 			{
 				recursiveMenu(m.getSubMenu());
@@ -95,7 +99,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	@Override
 	public void onPageSelected(int pos)
 	{
-		setTitle(sectionsPagerAdapter.getPageTitle(pos));
+		LGFixHelper.setTitle(this, sectionsPagerAdapter.getPageTitle(pos));
 	}
 	
 	@Override

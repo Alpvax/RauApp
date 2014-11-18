@@ -7,6 +7,8 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="ifRoom"
-        android:title="@latinString/action_settings"/>
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="@latinString/action_settings"
+        android:titleCondensed="action_settings"/>
 
 </menu>

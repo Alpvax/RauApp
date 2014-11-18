@@ -1,6 +1,7 @@
 package alpvax.rau;
 
-import alpvax.rau.AppLoadingTask.TaskFinishedListener;
+import alpvax.rau.util.tasks.AlpLoadingTask.TaskFinishedListener;
+import alpvax.rau.util.tasks.AppLoadingTask;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ public class SplashActivity extends Activity implements TaskFinishedListener
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.splash_screen);
+		//setContentView(R.layout.splash_screen);
 
 		new AppLoadingTask(this).execute(this);
 

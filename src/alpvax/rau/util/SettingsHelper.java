@@ -1,13 +1,12 @@
 package alpvax.rau.util;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import alpvax.rau.R;
 import alpvax.rau.text.EnumLanguage;
 import alpvax.rau.text.TextFormatter;
-import alpvax.rau.util.fonts.FontPreference;
+import alpvax.rau.util.settings.FontPreference;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -19,7 +18,7 @@ import android.provider.MediaStore;
 
 public class SettingsHelper//TODO: Language changing
 {
-	public static class SettingsKeys
+	public static final class SettingsKeys
 	{
 		public static String KEY_FIRST_RUN;
 		public static String KEY_DETECTED_NUMBER;
@@ -41,24 +40,55 @@ public class SettingsHelper//TODO: Language changing
 		 * as opposed to the ones in settings
 		 */
 		private static List<String> invisible = new ArrayList<String>();
+		/**
+		 * List of all keys corresponding to preferences which need updating
+		 */
+		private static List<String> ALL = new ArrayList<String>();
 		
 		private static void init(Context c)
 		{
 			invisible.add(KEY_FIRST_RUN = c.getString(R.prefKey.first_run));
 			invisible.add(KEY_DETECTED_NUMBER = c.getString(R.prefKey.detected_number));
 			
-			KEY_OWN_NUMBER = c.getString(R.prefKey.own_number);
-			KEY_AUTO_ADD = c.getString(R.prefKey.auto_add_contact);
-			KEY_SEND_TO_SELF = c.getString(R.prefKey.send_to_self);
-			KEY_FONT_PREFIX = c.getString(R.prefKey.font_prefix);
-			KEY_LANGUAGE = c.getString(R.prefKey.language);
-			KEY_NOTIFY_SOUND = c.getString(R.prefKey.notification);
-			//KEY_KEYBOARD_CONTROLS = c.getString(R.prefKey.kbd_btns);
+			KEY_OWN_NUMBER = add(c.getString(R.prefKey.own_number));
+			KEY_AUTO_ADD = add(c.getString(R.prefKey.auto_add_contact));
+			KEY_SEND_TO_SELF = add(c.getString(R.prefKey.send_to_self));
+			KEY_FONT_PREFIX = add(c.getString(R.prefKey.font_prefix));
+			KEY_LANGUAGE = add(c.getString(R.prefKey.language));
+			KEY_NOTIFY_SOUND = add(c.getString(R.prefKey.notification));
+			//KEY_KEYBOARD_CONTROLS = add(c.getString(R.prefKey.kbd_btns));
 			
-			GROUP_GENERAL = c.getString(R.prefKey.general_settings);
-			GROUP_MESSAGING = c.getString(R.prefKey.messaging_settings);
-			GROUP_FONTS = c.getString(R.prefKey.fonts_settings);
-			GROUP_DEBUG = c.getString(R.prefKey.debug_settings);
+			GROUP_GENERAL = add(c.getString(R.prefKey.general_settings));
+			GROUP_MESSAGING = add(c.getString(R.prefKey.messaging_settings));
+			GROUP_FONTS = add(c.getString(R.prefKey.fonts_settings));
+			GROUP_DEBUG = add(c.getString(R.prefKey.debug_settings));
+			
+			/*for(Field f : R.prefKey.class.getDeclaredFields())
+	        {
+	        	try
+	        	{
+		        	String key = c.getString(f.getInt(null));
+					if(!invisible.contains(key))
+					{
+			        	add(key);
+					}
+				}
+	        	catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+	        }*/
+		}
+		/**
+		 * @return key for ease of use inline
+		 */
+		public static String add(String key)
+		{
+			if(!ALL.contains(key))
+			{
+				ALL.add(key);
+			}
+			return key;
 		}
 	}
 	private SharedPreferences prefs;
@@ -110,7 +140,7 @@ public class SettingsHelper//TODO: Language changing
 		if(key.startsWith(SettingsKeys.KEY_FONT_PREFIX))
 		{
 			FontPreference pref = (FontPreference)p;
-			AppUtils.FONTS.setFont(pref.getLang(), pref.getValue());//XXX:Crash here somewhere
+			AppUtils.FONTS.setFont(pref.getLang(), pref.getValue());
 		}
 	}
 	
@@ -132,7 +162,7 @@ public class SettingsHelper//TODO: Language changing
 	{
     	if(key == SettingsKeys.KEY_LANGUAGE)
     	{
-    		return AppUtils.SETTINGS.getLanguage().formattedString();
+    		return AppUtils.SETTINGS.getLanguage().keyedString();
     	}
     	if(key == SettingsKeys.KEY_NOTIFY_SOUND)
     	{
@@ -144,7 +174,7 @@ public class SettingsHelper//TODO: Language changing
 				{
 					Cursor c = AppUtils.APP_CONTEXT.getContentResolver().query(u, new String[]{MediaStore.Audio.AudioColumns.TITLE}, null, null, null);
 					c.moveToFirst();
-					name = c.getString(0);
+					name = EnumLanguage.LATIN.langEscape() + c.getString(0);//Always use latin font for notification sound
 					c.close();
 				}
 				else
@@ -169,40 +199,14 @@ public class SettingsHelper//TODO: Language changing
 	 */
 	public void updateLabels(PreferenceManager pm)
 	{
-		for(Field f : R.prefKey.class.getDeclaredFields())
-        {
-        	try
-        	{
-	        	String key = AppUtils.APP_CONTEXT.getString(f.getInt(null));
-				if(!SettingsKeys.invisible.contains(key))
-				{
-		        	Preference p = pm.findPreference(key);
-					if(p != null)
-					{
-			        	p.setTitle(new TextFormatter(getTitle(key, p)));
-						p.setSummary(new TextFormatter(getSummary(key, p)));
-					}
-				}
-			}
-        	catch(Exception e)
-			{
-				e.printStackTrace();
-			}
-        }
-		/*System.out.println("General settings preference exists using SharedPrefs: " + prefs.contains(AppUtils.APP_CONTEXT.getString(R.prefKey.general_settings)));
-		System.out.println("General settings preference exists using PreferenceManager: " + (pm.findPreference(AppUtils.APP_CONTEXT.getString(R.prefKey.general_settings)) != null));
-		for(String key : prefs.getAll().keySet())
+		for(String key : SettingsKeys.ALL)
 		{
-			if(!SettingsKeys.invisible.contains(key))
+			Preference p = pm.findPreference(key);
+			if(p != null)
 			{
-				Preference p = pm.findPreference(key);
-				Log.d("Loading settings labels", "Key: " + key + ". Preference: " + p);
-				if(p != null)
-				{
-		        	p.setTitle(new TextFormatter(getTitle(key, p)));
-					p.setSummary(new TextFormatter(getSummary(key, p)));
-				}
+	        	p.setTitle(new TextFormatter(getTitle(key, p)));
+				p.setSummary(new TextFormatter(getSummary(key, p)));
 			}
-		}*/
+		}
 	}
 }

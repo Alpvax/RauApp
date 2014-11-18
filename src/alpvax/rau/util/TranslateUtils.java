@@ -24,7 +24,7 @@ public class TranslateUtils//TODO: Re-design translation
 		{
 			//Log.d("StringResource", "No resource found with id " + resID + ". (" + string + ")");
 		}
-		return resID != 0 ? lang.langEscape() + r.getText(resID) : String.format("%3$sMissing String Resource: \"%1$s\". (ID: %2$d)", string, resID, "");//AppUtils.CONSTANTS.MISSING_STRING));
+		return resID != 0 ? lang.langEscape() + r.getText(resID) : String.format("%2$sMissing String Resource: \"%1$s\".", string, "");//AppUtils.CONSTANTS.MISSING_STRING));
 	}
 	public static CharSequence getText(int resID)
 	{

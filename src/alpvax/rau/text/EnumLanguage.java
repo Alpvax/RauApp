@@ -55,25 +55,15 @@ public enum EnumLanguage
 	@Override
 	public String toString()
 	{
-		try
-		{
-			return new TextFormatter(TranslateUtils.getText(name().toLowerCase(Locale.UK))).toString();
-		}
-		catch(IllegalArgumentException e)
-		{
-			return super.toString();
-		}
+		return new TextFormatter(TranslateUtils.getText(name().toLowerCase(Locale.UK))).toString();
 	}
 	public CharSequence formattedString()
 	{
-		try
-		{
-			return new TextFormatter(TranslateUtils.getText(name().toLowerCase(Locale.UK), this));
-		}
-		catch(IllegalArgumentException e)
-		{
-			return super.toString();
-		}
+		return new TextFormatter(TranslateUtils.getText(name().toLowerCase(Locale.UK), this));
+	}
+	public CharSequence keyedString()
+	{
+		return TranslateUtils.getText(name().toLowerCase(Locale.UK), this);
 	}
 	
 	public static EnumLanguage get(int i)

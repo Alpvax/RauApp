@@ -4,9 +4,9 @@ import alpvax.rau.R;
 import alpvax.rau.text.EnumLanguage;
 import alpvax.rau.text.TextFormatter;
 import alpvax.rau.util.AppUtils;
+import alpvax.rau.util.LGFixHelper;
 import alpvax.rau.util.SettingsHelper.SettingsKeys;
 import alpvax.rau.util.TranslateUtils;
-import alpvax.rau.util.fonts.FontPreference;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -29,18 +29,19 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
         {
         	EnumLanguage lang = EnumLanguage.values[i];
         	FontPreference pref = new FontPreference(a);
-        	pref.setKey(SettingsKeys.KEY_FONT_PREFIX + lang.name());
+        	pref.setKey(SettingsKeys.add(SettingsKeys.KEY_FONT_PREFIX + lang.name()));
         	pref.setTitle(new TextFormatter(lang.formattedString()));
         	pref.setLang(lang);
-        	pref.setSummary(pref.getFontName());
         	fonts.addPreference(pref);
+        	//pref.setSummary(pref.getFontName());
         }
         ListPreference p = (ListPreference)findPreference(SettingsKeys.KEY_LANGUAGE);
         p.setEntries(new CharSequence[]{EnumLanguage.LATIN.formattedString(), EnumLanguage.RAU.formattedString()});
         p.setEntryValues(new String[]{EnumLanguage.LATIN.name(), EnumLanguage.RAU.name()});
         //p.setValueIndex(1);
         AppUtils.SETTINGS.updateLabels(getPreferenceManager());
-        a.setTitle(new TextFormatter(TranslateUtils.getText("title_activity_settings")));
+        LGFixHelper.setTitle(a, new TextFormatter(TranslateUtils.getText("title_activity_settings")));
+        //a.setTitle(new TextFormatter(TranslateUtils.getText("title_activity_settings")));
     }
 	
 	@Override
@@ -51,9 +52,9 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 	}
 	
 	@Override
-	public void onPause()
+	public void onStop()
 	{
-		super.onPause();
+		super.onStop();
 		getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
 	}
 
@@ -66,7 +67,8 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 		{
 	        Activity a = getActivity();
 	        AppUtils.SETTINGS.updateLabels(getPreferenceManager());
-	        a.setTitle(new TextFormatter(TranslateUtils.getText("title_activity_settings")));
+	        LGFixHelper.setTitle(a, new TextFormatter(TranslateUtils.getText("title_activity_settings")));
+	        //a.setTitle(new TextFormatter(TranslateUtils.getText("title_activity_settings")));
 		}
 	}
 	
@@ -80,6 +82,7 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 	        getFragmentManager().beginTransaction()
 	                .replace(android.R.id.content, new SettingsFragment())
 	                .commit();
+	        LGFixHelper.onCreate(this);
 	    }
 	}
 }

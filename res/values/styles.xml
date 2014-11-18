@@ -14,11 +14,11 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style>
-    
-    <style name="AppTheme.NoTitleBar" parent="android:Theme.Light.NoTitleBar">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="SplashTheme" parent="AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <!-- <item name="android:windowFullscreen">true</item> -->
+        <!-- <item name="android:windowContentOverlay">@null</item> -->
+    </style>
 </resources>
