@@ -113,6 +113,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	protected void onResume()
 	{
 		super.onResume();
+		LGFixHelper.setTitle(this, sectionsPagerAdapter.getPageTitle(pos));
 		invalidateOptionsMenu();
 	}
 
