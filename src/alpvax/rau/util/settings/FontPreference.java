@@ -22,6 +22,7 @@ import android.preference.ListPreference;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,7 +83,7 @@ public class FontPreference extends ListPreference implements DialogInterface.On
     public void discoverFonts()
     {
     	//TODO: Get the fonts on the device
-        FontManager fm = new FontManager(fontLang.dirNames);
+        FontManager fm = new FontManager(getLang().dirNames);
         if(fontLang == EnumLanguage.LATIN)
         {
         	fm.useSystemFonts();
@@ -219,6 +220,10 @@ public class FontPreference extends ListPreference implements DialogInterface.On
             {
                 // Find the text view from our interface
                 CheckedTextView tv = (CheckedTextView)view.findViewById(android.R.id.text1);
+                if(fontNames.get(position).toString().equalsIgnoreCase("Default"))
+                {
+                	Log.d("Default font: " + getLang().name(), "Path: \"" + fontPaths.get(position) + "\"");
+                }
                 if(!fontPaths.get(position).equals(""))
                 {
 	                // Replace the string with the current font name using our typeface
@@ -227,7 +232,8 @@ public class FontPreference extends ListPreference implements DialogInterface.On
                 }
                 else
                 {
-	                tv.setTypeface(Typeface.DEFAULT);
+                	Log.d("Null font: " + getLang().name(), "Name: \"" + fontNames.get(position) + "\"");
+	                tv.setTypeface(AppUtils.FONTS.getDefault(getLang()));//TODO:Work out what is going wrong here
                 }
                 // If you want to make the selected item having different foreground or background color,
                 // be aware of themes. In some of them your foreground color may be the background color.

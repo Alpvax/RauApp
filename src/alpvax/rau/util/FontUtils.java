@@ -35,4 +35,9 @@ public class FontUtils
 			font_paths[i] = path;
 		}
 	}
+	
+	public Typeface getDefault(EnumLanguage lang)
+	{
+		return def_fonts[lang.ordinal()] != null ? Typeface.createFromAsset(AppUtils.APP_CONTEXT.getAssets(), def_fonts[lang.ordinal()]) : Typeface.DEFAULT;
+	}
 }

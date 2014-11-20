@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="rauString" name="Default">Default</item><!-- Capitalised because "default" is a keyword -->
+    <item type="rauString" name="Default"></item><!-- Capitalised because "default" is a keyword -->
     <item type="rauString" name="silent">Silent</item>
     
     <item type="rauString" name="verify">Verify</item>

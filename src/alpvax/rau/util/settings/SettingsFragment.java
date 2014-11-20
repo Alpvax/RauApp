@@ -15,6 +15,9 @@ import android.preference.ListPreference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NavUtils;
+import android.util.Log;
+import android.view.MenuItem;
 
 public class SettingsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener
 {
@@ -40,8 +43,8 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
         p.setEntryValues(new String[]{EnumLanguage.LATIN.name(), EnumLanguage.RAU.name()});
         //p.setValueIndex(1);
         AppUtils.SETTINGS.updateLabels(getPreferenceManager());
-        LGFixHelper.setTitle(a, new TextFormatter(TranslateUtils.getText("title_activity_settings")));
-        //a.setTitle(new TextFormatter(TranslateUtils.getText("title_activity_settings")));
+        //LGFixHelper.setTitle(a, new TextFormatter(TranslateUtils.getText("title_activity_settings")));
+        a.setTitle(new TextFormatter(TranslateUtils.getText("title_activity_settings")));
     }
 	
 	@Override
@@ -57,6 +60,22 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 		super.onStop();
 		getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+    	Log.d("Action bar", "Pressed item: " + item.getTitle());
+	    if(LGFixHelper.isLG16 && item.getItemId() == android.R.id.home)
+	    {
+	    	Log.i("Navigating UP", "Jumping to app HOME due to you a bug on LG devices runing Android 4.1.2 (Jellybean)");
+	    	NavUtils.navigateUpFromSameTask(getActivity());
+	    	/*Activity a = getActivity();
+	        startActivity(new Intent(a, MainActivity.class));
+	        a.finish();*/
+	        return true;
+	    }
+	    return false;
+	}
 
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
@@ -67,8 +86,8 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 		{
 	        Activity a = getActivity();
 	        AppUtils.SETTINGS.updateLabels(getPreferenceManager());
-	        LGFixHelper.setTitle(a, new TextFormatter(TranslateUtils.getText("title_activity_settings")));
-	        //a.setTitle(new TextFormatter(TranslateUtils.getText("title_activity_settings")));
+	        //LGFixHelper.setTitle(a, new TextFormatter(TranslateUtils.getText("title_activity_settings")));
+	        a.setTitle(new TextFormatter(TranslateUtils.getText("title_activity_settings")));
 		}
 	}
 	
@@ -82,7 +101,6 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 	        getFragmentManager().beginTransaction()
 	                .replace(android.R.id.content, new SettingsFragment())
 	                .commit();
-	        LGFixHelper.onCreate(this);
 	    }
 	}
 }

@@ -15,6 +15,7 @@ import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.util.Log;
 
 public class SettingsHelper//TODO: Language changing
 {
@@ -205,8 +206,13 @@ public class SettingsHelper//TODO: Language changing
 			if(p != null)
 			{
 	        	p.setTitle(new TextFormatter(getTitle(key, p)));
-				p.setSummary(new TextFormatter(getSummary(key, p)));
+				p.setSummary(new TextFormatter(output(getSummary(key, p))));
 			}
 		}
+	}
+	private static CharSequence output(CharSequence s)
+	{
+		Log.d("InLine Output", s.toString());
+		return s;
 	}
 }

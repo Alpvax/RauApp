@@ -7,7 +7,7 @@
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="21" />
-    
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -17,9 +17,9 @@
         android:theme="@style/AppTheme" >
         <!-- android:name="alpvax.rau.AppStart" > -->
         <activity
-            android:name="alpvax.rau.SplashActivity"
+            android:name=".SplashActivity"
             android:label="@latinString/app_name"
-        	android:theme="@style/SplashTheme" >
+            android:theme="@style/SplashTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,19 +27,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="alpvax.rau.MainActivity"
+            android:name=".MainActivity"
             android:label="@latinString/app_name"
-        	android:theme="@style/AppTheme" >
-            <!-- <intent-filter>
+            android:theme="@style/AppTheme" >
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            </intent-filter>
+            -->
         </activity>
         <activity
-            android:name="alpvax.rau.util.settings.SettingsFragment$SettingsActivity"
+            android:name=".util.settings.SettingsFragment$SettingsActivity"
             android:label="@latinString/title_activity_settings"
-            android:parentActivityName="alpvax.rau.android.MainActivity" >
+            android:parentActivityName=".android.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="alpvax.rau.android.MainActivity" />

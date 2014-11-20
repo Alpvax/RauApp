@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item type="rauString" name="latin">Latin</item>
     <item type="rauString" name="rau">&#xE100;</item>
     <item type="rauString" name="app_name">&#xE100;</item>
     

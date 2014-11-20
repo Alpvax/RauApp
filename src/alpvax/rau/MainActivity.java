@@ -2,7 +2,6 @@ package alpvax.rau;
 
 import alpvax.rau.text.TextFormatter;
 import alpvax.rau.util.AppUtils;
-import alpvax.rau.util.LGFixHelper;
 import alpvax.rau.util.TranslateUtils;
 import alpvax.rau.util.settings.SettingsFragment.SettingsActivity;
 import android.app.Activity;
@@ -42,7 +41,6 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		LGFixHelper.onCreate(this);
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the activity.
@@ -99,7 +97,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	@Override
 	public void onPageSelected(int pos)
 	{
-		LGFixHelper.setTitle(this, sectionsPagerAdapter.getPageTitle(pos));
+		setTitle(sectionsPagerAdapter.getPageTitle(pos));
 	}
 	
 	@Override
@@ -113,7 +111,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	protected void onResume()
 	{
 		super.onResume();
-		LGFixHelper.setTitle(this, sectionsPagerAdapter.getPageTitle(viewPager.getCurrentItem()));
+		setTitle(sectionsPagerAdapter.getPageTitle(viewPager.getCurrentItem()));
 		invalidateOptionsMenu();
 	}
 
