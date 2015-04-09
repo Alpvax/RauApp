@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme" >
         <!-- android:name="alpvax.rau.AppStart" > -->
         <activity
-            android:name=".SplashActivity"
+            android:name=".MainActivity"
             android:label="@latinString/app_name"
             android:theme="@style/SplashTheme" >
             <intent-filter>
