@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.os.Build;
 import android.widget.TextView;
 
+@Deprecated
 public class LGFixHelper
 {
 	public static final boolean isLG16 = Build.MANUFACTURER.toLowerCase(Locale.ENGLISH).contains("lg") && Build.VERSION.SDK_INT == 16;
@@ -24,7 +25,7 @@ public class LGFixHelper
 	
 	public static void setTitle(Activity a, CharSequence title)
 	{
-		if(false && isLG16)
+		if(isLG16)
 		{
 			a.setTitle("");
 			((TextView)a.getActionBar().getCustomView()).setText(title);

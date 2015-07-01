@@ -4,7 +4,6 @@ import alpvax.rau.R;
 import alpvax.rau.text.EnumLanguage;
 import alpvax.rau.text.TextFormatter;
 import alpvax.rau.util.AppUtils;
-import alpvax.rau.util.LGFixHelper;
 import alpvax.rau.util.SettingsHelper.SettingsKeys;
 import alpvax.rau.util.TranslateUtils;
 import android.app.Activity;
@@ -65,7 +64,7 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
     	Log.d("Action bar", "Pressed item: " + item.getTitle());
-	    if(LGFixHelper.isLG16 && item.getItemId() == android.R.id.home)
+	    if(alpvax.rau.util.LGFixHelper.isLG16 && item.getItemId() == android.R.id.home)
 	    {
 	    	Log.i("Navigating UP", "Jumping to app HOME due to you a bug on LG devices runing Android 4.1.2 (Jellybean)");
 	    	NavUtils.navigateUpFromSameTask(getActivity());
