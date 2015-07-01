@@ -32,7 +32,7 @@ import android.widget.CheckedTextView;
 public class FontPreference extends ListPreference implements DialogInterface.OnClickListener, TaskFinishedListener
 {
     private List<String> fontPaths = new ArrayList<String>();
-    private List<CharSequence> fontNames = new ArrayList<>();
+    private List<CharSequence> fontNames = new ArrayList<CharSequence>();
     private EnumLanguage fontLang;
 
 	public FontPreference(Context context)

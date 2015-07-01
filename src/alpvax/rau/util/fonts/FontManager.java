@@ -12,7 +12,7 @@ import android.os.Environment;
  
 public class FontManager
 {
-	private List<String> fontDirs = new ArrayList<>();
+	private List<String> fontDirs = new ArrayList<String>();
 	private static Boolean available = null;
 	
 	public FontManager(String... directories)
@@ -50,7 +50,7 @@ public class FontManager
     // absolute file name as key, and the font literal name (embedded into the font) as value.
     public HashMap<String, String> enumerateFonts()
     {
-        HashMap<String, String> fonts = new HashMap<>();
+        HashMap<String, String> fonts = new HashMap<String, String>();
         TTFAnalyzer analyzer = new TTFAnalyzer();
  
         for(String fontdir : fontDirs)
