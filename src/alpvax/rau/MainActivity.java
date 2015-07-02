@@ -1,9 +1,13 @@
 package alpvax.rau;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import alpvax.rau.text.TextFormatter;
 import alpvax.rau.util.AppUtils;
 import alpvax.rau.util.TranslateUtils;
 import alpvax.rau.util.settings.SettingsFragment.SettingsActivity;
+import alpvax.rau.util.tasks.GAPIRegistrationService;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -111,6 +115,11 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	protected void onResume()
 	{
 		super.onResume();
+		if(sectionsPagerAdapter.messagesEnabled = AppUtils.checkGooglePlayServices(this))
+		{
+            Intent intent = new Intent(this, GAPIRegistrationService.class);
+            startService(intent);
+		}
 		setTitle(sectionsPagerAdapter.getPageTitle(viewPager.getCurrentItem()));
 		invalidateOptionsMenu();
 	}
@@ -121,16 +130,21 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter
 	{
-		private FragmentFactory[] fragments = {
-				new FragmentFactory(PlaceholderFragment.class, "title_dictionary"),
-				new FragmentFactory(PlaceholderFragment.class, "title_messages"),
-				new FragmentFactory(PlaceholderFragment.class, "title_chatcontacts"),
-				new FragmentFactory(PlaceholderFragment.class, "title_chat")
-		};
+		private boolean messagesEnabled = true;
+		private String[] order = {"dictionary", "messages", "chatcontacts", "chat"};
+		private Map<String, FragmentFactory> fragments = new HashMap<String, FragmentFactory>();
 
 		public SectionsPagerAdapter(FragmentManager fm)
 		{
 			super(fm);
+			//fragments.put(new DictionaryFragment..)
+			for(String s : order)
+			{
+				if(!fragments.containsKey(s))
+				{
+					fragments.put(s, new FragmentFactory(PlaceholderFragment.class, "title_" + s));
+				}
+			}
 		}
 
 		@Override
@@ -138,9 +152,9 @@ public class MainActivity extends Activity implements OnPageChangeListener
 		{
 			try
 			{
-				return fragments[position].newFragment();
+				return messagesEnabled ? fragments.get(order[position]).newFragment() : fragments.get("dictionary").newFragment();
 			}
-			catch (Exception e)
+			catch(Exception e)
 			{
 				e.printStackTrace();
 			}
@@ -150,13 +164,13 @@ public class MainActivity extends Activity implements OnPageChangeListener
 		@Override
 		public int getCount()
 		{
-			return fragments.length;
+			return messagesEnabled ? order.length : 1;
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position)
 		{
-			return fragments[position].getTitle();
+			return fragments.get(order[position]).getTitle();
 		}
 	}
 	

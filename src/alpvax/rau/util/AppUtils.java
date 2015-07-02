@@ -1,5 +1,8 @@
 package alpvax.rau.util;
 
+import com.google.android.gms.common.GoogleApiAvailability;
+
+import android.app.Activity;
 import android.content.Context;
 
 public class AppUtils
@@ -18,5 +21,11 @@ public class AppUtils
 		//STRINGS = new TranslateUtils(c);
 		SETTINGS = new SettingsHelper(c);
 		FONTS = new FontUtils(c);
+	}
+	
+	public static boolean checkGooglePlayServices(Activity activity)
+	{
+		GoogleApiAvailability g = GoogleApiAvailability.getInstance();
+		return g.getErrorDialog(activity, g.isGooglePlayServicesAvailable(activity), 0) == null;
 	}
 }
