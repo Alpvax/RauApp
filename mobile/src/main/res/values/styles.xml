@@ -1,10 +1,11 @@
 <resources>
+    <style name="AppTheme" parent="AppTheme.Base"/>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorPrimary">@color/colourPrimary</item>
-        <item name="android:colorPrimaryDark">@color/colourPrimaryDark</item>
-        <!--<item name="android:textColorPrimary">@color/colourPrimary</item>-->
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colourPrimary</item>
+        <item name="colorPrimaryDark">@color/colourPrimary</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
     </style>
 
 </resources>
