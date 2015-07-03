@@ -44,7 +44,7 @@ public class GCMIntentService extends GCMBaseIntentService {
    * http://developers.google.com/eclipse/docs/cloud_endpoints for more
    * information.
    */
-  protected static final String PROJECT_NUMBER = "";
+  protected static final String PROJECT_NUMBER = "1048823223453";
 
   /**
    * Register the device for GCM.

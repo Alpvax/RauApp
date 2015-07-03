@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/messageEndpoint/v1/20150702162644/java/1.18.0-rc/rau.alpvax-messageEndpoint-v1-20150702162644-java-1.18.0-rc-sources.jar", 
-      "path": "rau.alpvax-messageEndpoint-v1-20150702162644-java-1.18.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/messageEndpoint/v1/20150703121214/java/1.18.0-rc/rau.alpvax-messageEndpoint-v1-20150703121214-java-1.18.0-rc-sources.jar", 
+      "path": "rau.alpvax-messageEndpoint-v1-20150703121214-java-1.18.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2015-07-02 16:26"
+      "timestamp": "2015-07-03 12:12"
     }, 
     {
-      "path": "rau.alpvax-messageEndpoint-v1-20150702162644-java-1.18.0-rc.jar.properties", 
+      "path": "rau.alpvax-messageEndpoint-v1-20150703121214-java-1.18.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -674,5 +674,5 @@
   "version": "v1", 
   "language_version": "1.18.0-rc", 
   "id": "messageEndpoint:v1", 
-  "revision": 20150702162644
+  "revision": 20150703121214
 }

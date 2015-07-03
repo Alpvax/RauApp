@@ -45,6 +45,7 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		startActivity(new Intent(this, RegisterActivity.class));
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the activity.
@@ -115,11 +116,11 @@ public class MainActivity extends Activity implements OnPageChangeListener
 	protected void onResume()
 	{
 		super.onResume();
-		if(sectionsPagerAdapter.messagesEnabled = AppUtils.checkGooglePlayServices(this))
+		/*if(sectionsPagerAdapter.messagesEnabled = AppUtils.checkGooglePlayServices(this))
 		{
             Intent intent = new Intent(this, GAPIRegistrationService.class);
             startService(intent);
-		}
+		}*/
 		setTitle(sectionsPagerAdapter.getPageTitle(viewPager.getCurrentItem()));
 		invalidateOptionsMenu();
 	}
