@@ -1,0 +1,127 @@
+{
+  "project_info": {
+    "project_id": "raudatabase",
+    "project_number": "1029824441619",
+    "name": "rauDatabase"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029824441619:android:5443e4999e01813f",
+        "client_id": "android:alpvax.rau",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "alpvax.rau"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029824441619-2o432kmnq1pcag50nrda3dcf4vdsgh69.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "alpvax.rau",
+            "certificate_hash": "9A4FCF18973E5A9DA1F7703FB2A7B107F1B51280"
+          }
+        },
+        {
+          "client_id": "1029824441619-eiqskk5h023nguop2guvb4cb00hgrvfv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "",
+        "client_id": "android:alpvax.rau.data",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "alpvax.rau.data"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029824441619-eiqskk5h023nguop2guvb4cb00hgrvfv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029824441619:android:34bc1c8ab2cc6079",
+        "client_id": "android:alpvax.alp",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "alpvax.alp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029824441619-eiqskk5h023nguop2guvb4cb00hgrvfv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
